@@ -1,0 +1,5 @@
+Flask
+supabase
+Pillow
+python-dotenv
+gunicorn
