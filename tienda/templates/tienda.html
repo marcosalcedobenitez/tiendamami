@@ -526,6 +526,7 @@
             right: -420px;
             width: min(400px, 92vw);
             height: 100vh;
+            height: 100dvh;
             background: white;
             z-index: 1100;
             box-shadow:
@@ -533,6 +534,7 @@
             transition: right 0.3s ease;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
         .panel-carrito.abierto {
@@ -546,6 +548,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .cabecera-carrito h2 {
@@ -562,9 +565,11 @@
         }
 
         .lista-carrito {
-            flex: 1;
+            flex: 1 1 auto;
+            min-height: 0;
             overflow-y: auto;
             padding: 15px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .item-carrito {
@@ -587,6 +592,7 @@
 
         .item-info {
             flex: 1;
+            min-width: 0;
         }
 
         .item-info strong {
@@ -615,6 +621,10 @@
         .total-carrito {
             padding: 18px;
             border-top: 1px solid #eee;
+            background: white;
+            flex: 0 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .total-linea {
@@ -635,6 +645,7 @@
             font-weight: bold;
             cursor: pointer;
             font-size: 15px;
+            display: block;
         }
 
         .carrito-vacio {
@@ -720,6 +731,50 @@
             .footer-links {
                 gap: 12px;
                 font-size: 14px;
+            }
+
+            /* =========================
+               CARRITO EN CELULAR
+            ========================= */
+
+            .panel-carrito {
+                width: 100%;
+                right: -100%;
+                height: 100vh;
+                height: 100dvh;
+            }
+
+            .panel-carrito.abierto {
+                right: 0;
+            }
+
+            .cabecera-carrito {
+                flex: 0 0 auto;
+            }
+
+            .lista-carrito {
+                flex: 1 1 0;
+                min-height: 0;
+                overflow-y: auto;
+                padding: 12px 15px;
+            }
+
+            .total-carrito {
+                flex: 0 0 auto;
+                padding: 14px 15px;
+                padding-bottom: calc(
+                    14px + env(safe-area-inset-bottom)
+                );
+            }
+
+            .total-linea {
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+
+            .boton-whatsapp-carrito {
+                padding: 15px;
+                font-size: 15px;
             }
 
         }
@@ -1479,13 +1534,6 @@
 
         };
 
-
-        /*
-            SEGURIDAD EXTRA:
-
-            1 = disponible
-            0 = agotado
-        */
 
         if (producto.stock <= 0) {
 
