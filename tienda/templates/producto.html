@@ -22,7 +22,6 @@
           type="image/svg+xml"
           href="{{ url_for('tienda.static', filename='favicon.svg') }}">
 
-
     <style>
 
         * {
@@ -31,727 +30,372 @@
             padding: 0;
         }
 
-
         body {
-
             font-family: Arial, sans-serif;
-
             background: #fff8f5;
-
             color: #4b3025;
-
         }
-
-
-        /* ==================================================
-           HEADER
-        ================================================== */
 
         header {
-
             background: #e8a9c1;
-
             padding: 18px 25px;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             flex-wrap: wrap;
-
             gap: 15px;
-
         }
-
 
         .logo {
-
             font-size: 28px;
-
             font-weight: bold;
-
         }
-
 
         header a {
-
             color: #4b3025;
-
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
 
         .boton-carrito-header {
-
             background: #6b4534;
-
             color: white;
-
             border: none;
-
             padding: 10px 15px;
-
             border-radius: 9px;
-
             cursor: pointer;
-
             font-weight: bold;
-
             font-size: 14px;
-
         }
-
 
         .boton-carrito-header:hover {
-
             background: #4b3025;
-
         }
-
-
-        /* ==================================================
-           PRODUCTO
-        ================================================== */
 
         .contenedor-producto {
-
             max-width: 1100px;
-
             margin: 50px auto;
-
             padding: 20px;
-
         }
-
 
         .producto-detalle {
-
             background: white;
-
             border-radius: 20px;
-
             padding: 30px;
-
             display: grid;
-
-            grid-template-columns:
-                minmax(0, 1fr)
-                minmax(0, 1fr);
-
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 40px;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.08);
-
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         }
-
-
-        /* ==================================================
-           IMAGEN
-        ================================================== */
 
         .imagen-contenedor {
-
             width: 100%;
-
             min-height: 400px;
-
             background: #fff8f5;
-
             border-radius: 15px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             overflow: hidden;
-
         }
-
 
         .imagen-contenedor img {
-
             width: 100%;
-
             height: 100%;
-
             max-height: 500px;
-
             object-fit: contain;
-
             display: block;
-
         }
-
-
-        /* ==================================================
-           INFORMACIÓN
-        ================================================== */
 
         .informacion {
-
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
-
         }
-
 
         .categoria {
-
             color: #8a6252;
-
             font-size: 15px;
-
             margin-bottom: 10px;
-
         }
-
 
         h1 {
-
             font-size: 34px;
-
             margin-bottom: 15px;
-
         }
-
 
         .descripcion {
-
             line-height: 1.6;
-
             margin-bottom: 20px;
-
         }
-
 
         .precio {
-
             font-size: 30px;
-
             font-weight: bold;
-
             color: #6b4534;
-
             margin-bottom: 10px;
-
         }
-
 
         .stock {
-
             margin-bottom: 25px;
-
         }
-
 
         .agotado {
-
             color: #b00020;
-
             font-weight: bold;
-
         }
-
-
-        /* ==================================================
-           BOTONES
-        ================================================== */
 
         .botones {
-
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 12px;
-
         }
-
 
         .boton {
-
             border: none;
-
             padding: 13px 20px;
-
             border-radius: 9px;
-
             text-decoration: none;
-
             font-weight: bold;
-
             cursor: pointer;
-
             font-size: 15px;
-
         }
-
 
         .boton-carrito {
-
             background: #e8a9c1;
-
             color: #4b3025;
-
         }
-
 
         .boton-carrito:hover {
-
             background: #d992ae;
-
         }
-
 
         .boton-volver {
-
             background: #6b4534;
-
             color: white;
-
         }
-
 
         .boton-volver:hover {
-
             background: #4b3025;
-
         }
 
-
-        /* ==================================================
-           CARRITO LATERAL
-        ================================================== */
+        /* CARRITO */
 
         .carrito-panel {
-
             position: fixed;
-
             top: 0;
-
             right: -400px;
-
             width: 380px;
-
             max-width: 95%;
-
             height: 100dvh;
-
             max-height: 100dvh;
-
             background: white;
-
-            box-shadow:
-                -5px 0 20px rgba(0, 0, 0, 0.2);
-
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
             z-index: 2000;
-
             transition: right 0.3s ease;
-
             display: flex;
-
             flex-direction: column;
-
         }
-
 
         .carrito-panel.abierto {
-
             right: 0;
-
         }
-
 
         .carrito-header {
-
             background: #e8a9c1;
-
             padding: 18px;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             flex-shrink: 0;
-
         }
-
 
         .carrito-header h2 {
-
             font-size: 22px;
-
         }
-
 
         .cerrar-carrito {
-
             border: none;
-
             background: transparent;
-
             font-size: 25px;
-
             cursor: pointer;
-
             color: #4b3025;
-
         }
-
 
         .carrito-contenido {
-
             padding: 20px;
-
             overflow-y: auto;
-
             flex: 1;
-
             min-height: 0;
-
         }
-
 
         .carrito-vacio {
-
             text-align: center;
-
             color: #8a6252;
-
             margin-top: 40px;
-
         }
-
 
         .item-carrito {
-
             display: flex;
-
             gap: 12px;
-
             padding: 12px 0;
-
             border-bottom: 1px solid #eee;
-
         }
-
 
         .item-carrito img {
-
             width: 70px;
-
             height: 70px;
-
             object-fit: contain;
-
             background: #fff8f5;
-
             border-radius: 8px;
-
             flex-shrink: 0;
-
         }
-
 
         .item-info {
-
             flex: 1;
-
             min-width: 0;
-
         }
-
 
         .item-info h3 {
-
             font-size: 15px;
-
             margin-bottom: 5px;
-
         }
-
 
         .item-precio {
-
             font-weight: bold;
-
             margin-bottom: 8px;
-
         }
-
 
         .controles-cantidad {
-
             display: flex;
-
             align-items: center;
-
             gap: 8px;
-
         }
-
 
         .controles-cantidad button {
-
             width: 28px;
-
             height: 28px;
-
             border: none;
-
             border-radius: 5px;
-
             background: #e8a9c1;
-
             color: #4b3025;
-
             font-weight: bold;
-
             cursor: pointer;
-
         }
-
 
         .eliminar-item {
-
             margin-top: 6px;
-
             border: none;
-
             background: transparent;
-
             color: #b00020;
-
             cursor: pointer;
-
             font-size: 12px;
-
         }
-
 
         .carrito-footer {
-
             padding: 20px;
-
             border-top: 1px solid #ddd;
-
             flex-shrink: 0;
-
             background: white;
-
         }
-
 
         .total-carrito {
-
             display: flex;
-
             justify-content: space-between;
-
             font-size: 20px;
-
             font-weight: bold;
-
             margin-bottom: 15px;
-
         }
-
-
-        /* ==================================================
-           WHATSAPP
-        ================================================== */
 
         .boton-whatsapp {
-
             width: 100%;
-
             border: none;
-
             background: #25d366;
-
             color: white;
-
             padding: 13px;
-
             border-radius: 8px;
-
             cursor: pointer;
-
             font-weight: bold;
-
             font-size: 15px;
-
             margin-bottom: 10px;
-
         }
-
 
         .boton-whatsapp:hover {
-
             background: #1ebe5d;
-
         }
-
-
-        /* ==================================================
-           VACIAR
-        ================================================== */
 
         .vaciar-carrito {
-
             width: 100%;
-
             border: none;
-
             background: #6b4534;
-
             color: white;
-
             padding: 12px;
-
             border-radius: 8px;
-
             cursor: pointer;
-
             font-weight: bold;
-
         }
-
 
         .vaciar-carrito:hover {
-
             background: #4b3025;
-
         }
-
-
-        /* ==================================================
-           OVERLAY
-        ================================================== */
 
         .carrito-overlay {
-
             position: fixed;
-
             inset: 0;
-
             background: rgba(0, 0, 0, 0.35);
-
             z-index: 1999;
-
             display: none;
-
         }
-
 
         .carrito-overlay.visible {
-
             display: block;
-
         }
-
-
-        /* ==================================================
-           FOOTER
-        ================================================== */
 
         footer {
-
             background: #4b3025;
-
             color: white;
-
             padding: 35px 20px;
-
             margin-top: 40px;
-
             text-align: center;
-
         }
-
-
-        /* ==================================================
-           MÓVIL
-        ================================================== */
 
         @media (max-width: 700px) {
 
             .contenedor-producto {
-
                 margin: 25px auto;
-
                 padding: 15px;
-
             }
-
 
             .producto-detalle {
-
                 grid-template-columns: 1fr;
-
                 padding: 20px;
-
             }
-
 
             .imagen-contenedor {
-
                 min-height: 280px;
-
             }
-
 
             h1 {
-
                 font-size: 28px;
-
             }
-
 
             .carrito-panel {
-
                 width: 100%;
-
                 max-width: 100%;
-
             }
-
 
             .carrito-contenido {
-
                 padding: 15px;
-
             }
-
 
             .carrito-footer {
-
                 padding: 14px;
-
             }
-
 
             header {
-
                 justify-content: center;
-
                 text-align: center;
-
             }
-
         }
 
     </style>
@@ -768,11 +412,9 @@
         DV
     </div>
 
-
     <a href="{{ url_for('tienda.inicio') }}">
         ← Volver a la tienda
     </a>
-
 
     <button
         class="boton-carrito-header"
@@ -789,7 +431,6 @@
 <main class="contenedor-producto">
 
     <div class="producto-detalle">
-
 
         <div class="imagen-contenedor">
 
@@ -816,16 +457,13 @@
                 {{ producto.categoria }}
             </div>
 
-
             <h1>
                 {{ producto.nombre }}
             </h1>
 
-
             <div class="descripcion">
                 {{ producto.descripcion }}
             </div>
-
 
             <div class="precio">
 
@@ -834,7 +472,6 @@
                 ).replace(",", ".") }}
 
             </div>
-
 
             <div class="stock">
 
@@ -886,9 +523,20 @@
 </main>
 
 
-<!-- ======================================================
-     OVERLAY
-====================================================== -->
+<!-- DATOS DEL PRODUCTO -->
+
+<div
+    id="datos-producto"
+    data-id="{{ producto.id }}"
+    data-nombre="{{ producto.nombre }}"
+    data-precio="{{ producto.precio|int }}"
+    data-stock="{{ producto.stock|int }}"
+    data-foto="{{ producto.foto or '' }}"
+    hidden>
+</div>
+
+
+<!-- OVERLAY -->
 
 <div
     id="carrito-overlay"
@@ -897,9 +545,7 @@
 </div>
 
 
-<!-- ======================================================
-     CARRITO
-====================================================== -->
+<!-- CARRITO -->
 
 <aside
     id="carrito-panel"
@@ -911,7 +557,6 @@
         <h2>
             🛒 Mi carrito
         </h2>
-
 
         <button
             class="cerrar-carrito"
@@ -983,42 +628,54 @@
        DATOS DEL PRODUCTO
     ================================================== */
 
-    const productoId =
-        "{{ producto.id }}";
+    const datosProducto =
+        document.getElementById("datos-producto");
 
+    const productoId =
+        datosProducto.dataset.id;
 
     const productoNombre =
-        {{ producto.nombre|tojson }};
-
+        datosProducto.dataset.nombre;
 
     const productoPrecio =
-        Number(
-            "{{ producto.precio|int }}"
-        );
-
+        Number(datosProducto.dataset.precio);
 
     const productoStock =
-        Number(
-            "{{ producto.stock|int }}"
-        );
-
+        Number(datosProducto.dataset.stock);
 
     const productoFoto =
-        {{ (producto.foto or "")|tojson }};
+        datosProducto.dataset.foto;
 
 
     /* ==================================================
-       CARRITO
+       OBTENER CARRITO
     ================================================== */
 
     function obtenerCarrito() {
 
-        return JSON.parse(
-            localStorage.getItem("carritoDV")
-        ) || [];
+        const carritoGuardado =
+            localStorage.getItem("carritoDV");
+
+        if (!carritoGuardado) {
+            return [];
+        }
+
+        try {
+
+            return JSON.parse(carritoGuardado);
+
+        } catch (error) {
+
+            return [];
+
+        }
 
     }
 
+
+    /* ==================================================
+       GUARDAR CARRITO
+    ================================================== */
 
     function guardarCarrito(carrito) {
 
@@ -1042,9 +699,12 @@
 
         const existente =
             carrito.find(
-                item =>
-                    String(item.id) ===
-                    String(productoId)
+                function(item) {
+
+                    return String(item.id) ===
+                        String(productoId);
+
+                }
             );
 
 
@@ -1099,7 +759,7 @@
 
 
     /* ==================================================
-       MOSTRAR CARRITO
+       ACTUALIZAR CARRITO
     ================================================== */
 
     function actualizarCarrito() {
@@ -1134,27 +794,16 @@
         if (carrito.length === 0) {
 
             contenedor.innerHTML = `
-
                 <div class="carrito-vacio">
-
                     🛒
-
                     <br><br>
-
                     Tu carrito está vacío.
-
                 </div>
-
             `;
 
+            contador.textContent = "0";
 
-            contador.textContent =
-                "0";
-
-
-            totalElemento.textContent =
-                "$0";
-
+            totalElemento.textContent = "$0";
 
             return;
 
@@ -1170,10 +819,8 @@
                 const cantidad =
                     Number(item.cantidad);
 
-
                 const precio =
                     Number(item.precio);
-
 
                 const subtotal =
                     precio * cantidad;
@@ -1181,7 +828,6 @@
 
                 cantidadTotal +=
                     cantidad;
-
 
                 total +=
                     subtotal;
@@ -1193,13 +839,11 @@
 
 
                 html += `
-
                     <div class="item-carrito">
 
                         <img
                             src="${imagen}"
                             alt="${item.nombre}">
-
 
                         <div class="item-info">
 
@@ -1207,52 +851,31 @@
                                 ${item.nombre}
                             </h3>
 
-
                             <div class="item-precio">
-
-                                $${formatearPrecio(
-                                    subtotal
-                                )}
-
+                                $${formatearPrecio(subtotal)}
                             </div>
-
 
                             <div class="controles-cantidad">
 
                                 <button
-                                    onclick="cambiarCantidad(
-                                        ${indice},
-                                        -1
-                                    )">
-
+                                    onclick="cambiarCantidad(${indice}, -1)">
                                     −
-
                                 </button>
-
 
                                 <span>
                                     ${cantidad}
                                 </span>
 
-
                                 <button
-                                    onclick="cambiarCantidad(
-                                        ${indice},
-                                        1
-                                    )">
-
+                                    onclick="cambiarCantidad(${indice}, 1)">
                                     +
-
                                 </button>
 
                             </div>
 
-
                             <button
                                 class="eliminar-item"
-                                onclick="eliminarProducto(
-                                    ${indice}
-                                )">
+                                onclick="eliminarProducto(${indice})">
 
                                 🗑️ Eliminar
 
@@ -1261,7 +884,6 @@
                         </div>
 
                     </div>
-
                 `;
 
             }
@@ -1301,9 +923,7 @@
 
 
         if (!producto) {
-
             return;
-
         }
 
 
@@ -1349,9 +969,7 @@
        ELIMINAR PRODUCTO
     ================================================== */
 
-    function eliminarProducto(
-        indice
-    ) {
+    function eliminarProducto(indice) {
 
         let carrito =
             obtenerCarrito();
@@ -1380,7 +998,6 @@
             "carritoDV"
         );
 
-
         actualizarCarrito();
 
     }
@@ -1393,17 +1010,13 @@
     function abrirCarrito() {
 
         document
-            .getElementById(
-                "carrito-panel"
-            )
+            .getElementById("carrito-panel")
             .classList
             .add("abierto");
 
 
         document
-            .getElementById(
-                "carrito-overlay"
-            )
+            .getElementById("carrito-overlay")
             .classList
             .add("visible");
 
@@ -1420,17 +1033,13 @@
     function cerrarCarrito() {
 
         document
-            .getElementById(
-                "carrito-panel"
-            )
+            .getElementById("carrito-panel")
             .classList
             .remove("abierto");
 
 
         document
-            .getElementById(
-                "carrito-overlay"
-            )
+            .getElementById("carrito-overlay")
             .classList
             .remove("visible");
 
@@ -1441,9 +1050,7 @@
        FORMATEAR PRECIO
     ================================================== */
 
-    function formatearPrecio(
-        numero
-    ) {
+    function formatearPrecio(numero) {
 
         return Number(numero)
             .toLocaleString(
@@ -1492,7 +1099,8 @@
                     Number(item.cantidad);
 
 
-                total += subtotal;
+                total +=
+                    subtotal;
 
 
                 mensaje +=
@@ -1501,9 +1109,7 @@
                     " x" +
                     item.cantidad +
                     " - $" +
-                    formatearPrecio(
-                        subtotal
-                    ) +
+                    formatearPrecio(subtotal) +
                     "\n";
 
             }
@@ -1527,9 +1133,7 @@
             "https://wa.me/" +
             numeroWhatsApp +
             "?text=" +
-            encodeURIComponent(
-                mensaje
-            );
+            encodeURIComponent(mensaje);
 
 
         window.open(
