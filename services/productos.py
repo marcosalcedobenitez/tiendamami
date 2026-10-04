@@ -26,47 +26,6 @@ print("✅ Conexión con Supabase preparada")
 
 
 # ==========================================================
-# PRODUCTOS DE PRUEBA
-# ==========================================================
-
-productos_prueba = [
-    {
-        "id": 1,
-        "nombre": "Crema hidratante",
-        "categoria": "Cuidado de la piel",
-        "precio": 25000,
-        "stock": 10,
-        "descripcion": (
-            "Crema hidratante para el cuidado diario de la piel."
-        ),
-        "foto": ""
-    },
-    {
-        "id": 2,
-        "nombre": "Labial",
-        "categoria": "Maquillaje",
-        "precio": 15000,
-        "stock": 8,
-        "descripcion": (
-            "Labial para complementar tu maquillaje."
-        ),
-        "foto": ""
-    },
-    {
-        "id": 3,
-        "nombre": "Shampoo",
-        "categoria": "Cabello",
-        "precio": 22000,
-        "stock": 6,
-        "descripcion": (
-            "Producto para el cuidado y limpieza del cabello."
-        ),
-        "foto": ""
-    }
-]
-
-
-# ==========================================================
 # OBTENER TODOS LOS PRODUCTOS
 # ==========================================================
 
@@ -94,11 +53,10 @@ def obtener_productos():
             return productos
 
         print(
-            "ℹ️ La tabla productos está vacía. "
-            "Usando productos de prueba."
+            "ℹ️ La tabla productos está vacía."
         )
 
-        return productos_prueba
+        return []
 
     except Exception as error:
 
@@ -108,7 +66,7 @@ def obtener_productos():
 
         print(error)
 
-        return productos_prueba
+        return []
 
 
 # ==========================================================
