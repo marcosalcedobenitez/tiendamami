@@ -309,6 +309,7 @@
             right: -420px;
             width: min(400px, 92vw);
             height: 100vh;
+            height: 100dvh;
             background: white;
             z-index: 1100;
             box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
@@ -328,6 +329,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .cabecera-carrito h2 {
@@ -343,8 +345,13 @@
             cursor: pointer;
         }
 
+        /* =========================
+           LISTA DEL CARRITO
+        ========================= */
+
         .lista-carrito {
             flex: 1;
+            min-height: 0;
             overflow-y: auto;
             padding: 15px;
         }
@@ -396,9 +403,15 @@
             flex-shrink: 0;
         }
 
+        /* =========================
+           PARTE INFERIOR DEL CARRITO
+        ========================= */
+
         .total-carrito {
             padding: 18px;
             border-top: 1px solid #eee;
+            background: white;
+            flex-shrink: 0;
         }
 
         .total-linea {
@@ -525,6 +538,37 @@
                 bottom: 15px;
                 width: 58px;
                 height: 58px;
+            }
+
+            /* El carrito ocupa toda la pantalla */
+
+            .panel-carrito {
+                width: 100%;
+                right: -100%;
+            }
+
+            .panel-carrito.abierto {
+                right: 0;
+            }
+
+            /* La lista se desplaza,
+               el botón queda fijo abajo */
+
+            .lista-carrito {
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .total-carrito {
+                padding: 14px;
+                padding-bottom: calc(
+                    14px + env(safe-area-inset-bottom)
+                );
+            }
+
+            .boton-whatsapp-carrito {
+                padding: 15px;
+                font-size: 15px;
             }
 
         }
