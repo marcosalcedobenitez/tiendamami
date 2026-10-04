@@ -5,485 +5,345 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Administración - Distrivariedades El Progreso</title>
 
     <style>
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-            background: #fffaf7;
-            color: #4b3028;
+            background: #f5f5f5;
+            color: #222;
         }
 
         header {
-            background: #f3d6df;
-            padding: 20px;
-        }
-
-        .encabezado {
-            max-width: 1100px;
-            margin: auto;
-
+            background: #111;
+            color: white;
+            padding: 18px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-dv {
-            width: 50px;
-            height: 50px;
-
-            border-radius: 50%;
-
-            background: #7b4b3a;
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-weight: bold;
-        }
-
-        .logo h1 {
-            font-size: 21px;
-            color: #6b4033;
-        }
-
-        .logo p {
-            margin-top: 3px;
-            font-size: 13px;
-            color: #815f55;
+        header h1 {
+            margin: 0;
+            font-size: 22px;
         }
 
         .acciones-header {
             display: flex;
-            align-items: center;
             gap: 10px;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
-        .boton-header {
+        .acciones-header a {
             text-decoration: none;
-
-            background: #7b4b3a;
             color: white;
-
-            padding: 10px 15px;
-
+            background: #333;
+            padding: 10px 14px;
             border-radius: 8px;
-
-            font-weight: bold;
-
             font-size: 14px;
         }
 
-        .boton-header:hover {
-            background: #633b2e;
+        .acciones-header a:hover {
+            background: #555;
         }
 
-        .boton-configuracion {
-            background: #9b6378;
+        .salir {
+            background: #c62828 !important;
         }
 
-        .boton-configuracion:hover {
-            background: #7f4e61;
-        }
-
-        .boton-salir {
-            background: #8b3f59;
-        }
-
-        .boton-salir:hover {
-            background: #6f3046;
-        }
-
-        main {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 20px;
+        .contenedor {
+            width: min(1100px, 94%);
+            margin: 30px auto;
         }
 
         .titulo {
-            text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .titulo h2 {
-            color: #6b4033;
+            margin: 0 0 5px;
             font-size: 28px;
         }
 
         .titulo p {
-            margin-top: 8px;
-            color: #856b62;
+            margin: 0;
+            color: #666;
         }
-
-        .panel {
-            background: white;
-
-            padding: 30px;
-
-            border-radius: 18px;
-
-            border: 1px solid #efd9d2;
-
-            box-shadow:
-                0 5px 18px rgba(80,40,30,0.08);
-
-            margin-bottom: 30px;
-        }
-
-        .panel h3 {
-            color: #6b4033;
-            margin-bottom: 22px;
-        }
-
-        /* =========================
-           FORMULARIO
-        ========================= */
 
         .formulario {
-            display: grid;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 35px;
+        }
 
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
+        .formulario h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 21px;
         }
 
         .campo {
-            display: flex;
-            flex-direction: column;
+            margin-bottom: 16px;
         }
 
-        .campo.completo {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            margin-bottom: 7px;
-
+        .campo label {
+            display: block;
             font-weight: bold;
-
-            color: #64453c;
+            margin-bottom: 7px;
         }
 
-        input,
-        select,
-        textarea {
+        .campo input,
+        .campo select,
+        .campo textarea {
             width: 100%;
-
             padding: 12px;
-
-            border: 1px solid #dfc8c0;
-
-            border-radius: 9px;
-
-            font-family: Arial, sans-serif;
-
-            background: #fffdfc;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
         }
 
-        textarea {
-            min-height: 100px;
+        .campo textarea {
+            min-height: 110px;
             resize: vertical;
         }
 
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-
-            border-color: #b35f7a;
-
-            box-shadow:
-                0 0 0 2px rgba(179,95,122,0.10);
-        }
-
-        .selector-imagen {
-            padding: 15px;
-
-            background: #fff8f5;
-
-            border: 1px dashed #cda99d;
-
-            border-radius: 10px;
-        }
-
-        .selector-imagen input[type="file"] {
-            padding: 8px;
-
-            background: white;
-
-            cursor: pointer;
-        }
-
-        .ayuda-imagen {
-            margin-top: 8px;
-
-            font-size: 12px;
-
-            color: #8b7068;
-        }
-
-        .boton {
+        .boton-principal {
+            width: 100%;
             border: none;
-
-            padding: 13px;
-
-            border-radius: 10px;
-
-            background: #7b4b3a;
-
+            background: #111;
             color: white;
-
+            padding: 13px;
+            border-radius: 8px;
             font-size: 16px;
-
             font-weight: bold;
-
             cursor: pointer;
         }
 
-        .boton:hover {
-            background: #633b2e;
+        .boton-principal:hover {
+            background: #333;
         }
 
-        .boton-agregar {
-            grid-column: 1 / -1;
+        .productos-titulo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .productos-titulo h3 {
+            margin: 0;
+            font-size: 22px;
         }
 
         /* =========================
            PRODUCTOS
         ========================= */
 
-        .lista-productos {
+        .productos {
             display: grid;
 
-            grid-template-columns:
-                repeat(auto-fit, minmax(230px, 270px));
+            /* 3 publicaciones por fila */
+            grid-template-columns: repeat(3, minmax(0, 1fr));
 
             gap: 20px;
-
-            justify-content: center;
+            align-items: start;
         }
 
-        .producto-admin {
-            width: 100%;
-
-            border: 1px solid #efd9d2;
-
+        .producto {
+            background: white;
             border-radius: 14px;
-
             overflow: hidden;
-
-            background: #fffaf8;
-        }
-
-        .producto-admin-imagen {
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
             width: 100%;
-
-            height: 260px;
-
-            background: #f7e8e3;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            color: #9b7c72;
-
-            font-size: 13px;
-
-            overflow: hidden;
-        }
-
-        .producto-admin-imagen img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-        }
-
-        .producto-admin-info {
-            padding: 16px;
-        }
-
-        .producto-admin-info h4 {
-            color: #633e34;
-
-            margin-bottom: 8px;
-
-            font-size: 18px;
-        }
-
-        .dato {
-            margin-bottom: 5px;
-
-            font-size: 13px;
-
-            color: #80665d;
-        }
-
-        .acciones {
-            display: flex;
-
-            gap: 8px;
-
-            margin-top: 15px;
-        }
-
-        .editar {
-            flex: 1;
-
-            background: #7b4b3a;
-
-            color: white;
-
-            text-decoration: none;
-
-            text-align: center;
-
-            padding: 10px;
-
-            border-radius: 8px;
-
-            font-weight: bold;
-
-            font-size: 13px;
-        }
-
-        .editar:hover {
-            background: #633b2e;
-        }
-
-        .eliminar {
-            flex: 1;
-
-            background: #f1d5dd;
-
-            color: #8b3f59;
-
-            border: none;
-
-            padding: 10px;
-
-            border-radius: 8px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        .eliminar:hover {
-            background: #eabcc9;
-        }
-
-        .sin-productos {
-            text-align: center;
-
-            color: #856b62;
-
-            padding: 20px;
-        }
-
-        .nota {
-            margin-top: 20px;
-
-            padding: 15px;
-
-            border-radius: 10px;
-
-            background: #fff1f5;
-
-            color: #76554c;
-
-            font-size: 14px;
-
-            line-height: 1.5;
-        }
-
-        footer {
-            margin-top: 60px;
-
-            background: #5b3b32;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 25px;
         }
 
         /* =========================
-           MÓVIL
+           IMAGEN DEL PRODUCTO
         ========================= */
 
-        @media (max-width: 700px) {
+        .producto img {
+            width: 100%;
+            height: 240px;
+            object-fit: contain;
+            display: block;
+            background: #f5f5f5;
+            padding: 8px;
+        }
 
-            .encabezado {
-                flex-direction: column;
-                text-align: center;
+        .producto-contenido {
+            padding: 18px;
+        }
+
+        .producto h4 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .categoria {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .precio {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .descripcion {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .estado {
+            display: inline-block;
+            padding: 7px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .disponible {
+            background: #dff5e3;
+            color: #197a30;
+        }
+
+        .agotado {
+            background: #ffe0e0;
+            color: #b71c1c;
+        }
+
+        .botones {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .botones a,
+        .botones button {
+            width: 100%;
+            border: none;
+            padding: 11px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .editar {
+            background: #1976d2;
+            color: white;
+        }
+
+        .editar:hover {
+            background: #125ca5;
+        }
+
+        .estado-boton {
+            background: #555;
+            color: white;
+        }
+
+        .estado-boton:hover {
+            background: #333;
+        }
+
+        .eliminar {
+            background: #c62828;
+            color: white;
+        }
+
+        .eliminar:hover {
+            background: #9b1c1c;
+        }
+
+        .vacio {
+            background: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 14px;
+            color: #666;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .productos {
+                grid-template-columns: repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
             }
 
-            .acciones-header {
-                width: 100%;
+        }
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                align-items: flex-start;
             }
 
-            .boton-header {
-                flex: 1;
-                min-width: 130px;
-                text-align: center;
+            header h1 {
+                font-size: 19px;
+            }
+
+            .contenedor {
+                width: 92%;
+                margin-top: 20px;
             }
 
             .formulario {
-                grid-template-columns: 1fr;
-            }
-
-            .campo.completo {
-                grid-column: auto;
-            }
-
-            .boton-agregar {
-                grid-column: auto;
-            }
-
-            .panel {
                 padding: 20px;
             }
 
-            .lista-productos {
+            .productos {
                 grid-template-columns: 1fr;
-                justify-content: stretch;
+                gap: 20px;
             }
 
-            .producto-admin {
-                width: 100%;
-            }
-
-            .producto-admin-imagen {
-                height: 260px;
+            .producto img {
+                height: 240px;
+                padding: 8px;
             }
 
         }
@@ -492,103 +352,66 @@
 
 </head>
 
-
 <body>
-
 
 <header>
 
-    <div class="encabezado">
+    <h1>
+        Distrivariedades El Progreso
+    </h1>
 
-        <div class="logo">
+    <div class="acciones-header">
 
-            <div class="logo-dv">
-                DV
-            </div>
+        <a href="{{ url_for('tienda.inicio') }}">
+            🏪 Ver tienda
+        </a>
 
-            <div>
+        <a href="{{ url_for('admin.configuracion') }}">
+            ⚙️ Configuración
+        </a>
 
-                <h1>
-                    Distrivariedades El Progreso
-                </h1>
-
-                <p>
-                    Panel de administración
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="acciones-header">
-
-            <a
-                href="/"
-                class="boton-header"
-            >
-                ← Tienda
-            </a>
-
-
-            <a
-                href="{{ url_for('admin.configuracion') }}"
-                class="boton-header boton-configuracion"
-            >
-                ⚙️ Configuración
-            </a>
-
-
-            <a
-                href="{{ url_for('admin.logout') }}"
-                class="boton-header boton-salir"
-            >
-                🚪 Salir
-            </a>
-
-        </div>
+        <a
+            href="{{ url_for('admin.logout') }}"
+            class="salir"
+        >
+            🚪 Salir
+        </a>
 
     </div>
 
 </header>
 
 
+<main class="contenedor">
 
-<main>
-
-
-    <div class="titulo">
+    <section class="titulo">
 
         <h2>
-            Administración
+            Panel de administración
         </h2>
 
         <p>
-            Gestiona los productos de la tienda
+            Administra los productos de tu tienda.
         </p>
 
-    </div>
+    </section>
 
 
+    <!-- ================================================== -->
+    <!-- AGREGAR PRODUCTO -->
+    <!-- ================================================== -->
 
-    <!-- =========================
-         AGREGAR PRODUCTO
-    ========================= -->
-
-    <div class="panel">
+    <section class="formulario">
 
         <h3>
             ➕ Agregar producto
         </h3>
 
-
         <form
-            class="formulario"
+            action="{{ url_for('admin.agregar') }}"
             method="POST"
-            action="/agregar"
             enctype="multipart/form-data"
         >
-
 
             <div class="campo">
 
@@ -600,12 +423,11 @@
                     type="text"
                     id="nombre"
                     name="nombre"
-                    placeholder="Ej: Crema hidratante"
+                    placeholder="Ej: Espejo de maquillaje"
                     required
                 >
 
             </div>
-
 
 
             <div class="campo">
@@ -628,8 +450,8 @@
                         Cacharrería
                     </option>
 
-                    <option value="Maquillaje">
-                        Maquillaje
+                    <option value="Belleza">
+                        Belleza
                     </option>
 
                     <option value="Cabello">
@@ -640,14 +462,9 @@
                         Cuidado de la piel
                     </option>
 
-                    <option value="Belleza">
-                        Belleza
-                    </option>
-
                 </select>
 
             </div>
-
 
 
             <div class="campo">
@@ -660,64 +477,33 @@
                     type="number"
                     id="precio"
                     name="precio"
-                    placeholder="Ej: 25000"
                     min="0"
+                    step="0.01"
+                    placeholder="Ej: 25000"
                     required
                 >
 
             </div>
-
 
 
             <div class="campo">
 
-                <label for="stock">
-                    Stock
+                <label for="foto">
+                    Foto del producto
                 </label>
 
                 <input
-                    type="number"
-                    id="stock"
-                    name="stock"
-                    placeholder="Ej: 10"
-                    min="0"
+                    type="file"
+                    id="foto"
+                    name="foto"
+                    accept="image/*"
                     required
                 >
 
             </div>
 
 
-
-            <div class="campo completo">
-
-                <label for="foto">
-                    Imagen del producto
-                </label>
-
-
-                <div class="selector-imagen">
-
-                    <input
-                        type="file"
-                        id="foto"
-                        name="foto"
-                        accept="image/*"
-                    >
-
-                    <p class="ayuda-imagen">
-
-                        Selecciona directamente la imagen
-                        desde tu dispositivo.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="campo completo">
+            <div class="campo">
 
                 <label for="descripcion">
                     Descripción
@@ -726,197 +512,211 @@
                 <textarea
                     id="descripcion"
                     name="descripcion"
-                    placeholder="Escribe una descripción del producto..."
-                    required
+                    placeholder="Describe el producto..."
                 ></textarea>
 
             </div>
 
 
-
             <button
-                class="boton boton-agregar"
                 type="submit"
+                class="boton-principal"
             >
-
-                Agregar producto
-
+                ➕ Agregar producto
             </button>
-
 
         </form>
 
-    </div>
+    </section>
 
 
+    <!-- ================================================== -->
+    <!-- PRODUCTOS -->
+    <!-- ================================================== -->
 
-    <!-- =========================
-         PRODUCTOS EXISTENTES
-    ========================= -->
+    <section>
 
-    <div class="panel">
+        <div class="productos-titulo">
 
-        <h3>
-            📦 Productos actuales
-        </h3>
+            <h3>
+                📦 Productos publicados
+            </h3>
 
-
-        {% if productos %}
-
-
-            <div class="lista-productos">
-
-
-                {% for producto in productos %}
-
-
-                    <div class="producto-admin">
-
-
-                        <div class="producto-admin-imagen">
-
-                            {% if producto.foto %}
-
-                                <img
-                                    src="{{ producto.foto }}"
-                                    alt="{{ producto.nombre }}"
-                                >
-
-                            {% else %}
-
-                                Sin imagen
-
-                            {% endif %}
-
-                        </div>
-
-
-
-                        <div class="producto-admin-info">
-
-
-                            <h4>
-                                {{ producto.nombre }}
-                            </h4>
-
-
-                            <p class="dato">
-
-                                <strong>
-                                    Categoría:
-                                </strong>
-
-                                {{ producto.categoria }}
-
-                            </p>
-
-
-                            <p class="dato">
-
-                                <strong>
-                                    Precio:
-                                </strong>
-
-                                ${{ "{:,.0f}".format(
-                                    producto.precio|int
-                                ).replace(",", ".") }}
-
-                            </p>
-
-
-                            <p class="dato">
-
-                                <strong>
-                                    Stock:
-                                </strong>
-
-                                {{ producto.stock }}
-
-                            </p>
-
-
-
-                            <div class="acciones">
-
-
-                                <a
-                                    href="/editar/{{ producto.id }}"
-                                    class="editar"
-                                >
-                                    ✏️ Editar
-                                </a>
-
-
-                                <form
-                                    method="POST"
-                                    action="/eliminar/{{ producto.id }}"
-                                    style="flex: 1;"
-                                    onsubmit="return confirm('¿Seguro que quieres eliminar este producto?');"
-                                >
-
-                                    <button
-                                        type="submit"
-                                        class="eliminar"
-                                        style="width: 100%;"
-                                    >
-                                        🗑️ Eliminar
-                                    </button>
-
-                                </form>
-
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                {% endfor %}
-
-
-            </div>
-
-
-        {% else %}
-
-
-            <div class="sin-productos">
-
-                No hay productos registrados.
-
-            </div>
-
-
-        {% endif %}
-
-
-        <div class="nota">
-
-            💡 Desde aquí puedes agregar, editar y eliminar
-            productos. También puedes administrar los datos
-            de acceso desde el botón de configuración.
+            <span>
+                {{ productos|length }} producto(s)
+            </span>
 
         </div>
 
 
-    </div>
+        {% if productos %}
 
+        <div class="productos">
+
+            {% for producto in productos %}
+
+            <article class="producto">
+
+                {% if producto.foto %}
+
+                <img
+                    src="{{ producto.foto }}"
+                    alt="{{ producto.nombre }}"
+                >
+
+                {% else %}
+
+                <img
+                    src="https://via.placeholder.com/600x400?text=Sin+imagen"
+                    alt="Sin imagen"
+                >
+
+                {% endif %}
+
+
+                <div class="producto-contenido">
+
+                    <h4>
+                        {{ producto.nombre }}
+                    </h4>
+
+
+                    <div class="categoria">
+                        {{ producto.categoria }}
+                    </div>
+
+
+                    <div class="precio">
+
+                        ${{ "{:,.0f}".format(producto.precio|float).replace(",", ".") }}
+
+                    </div>
+
+
+                    {% if producto.descripcion %}
+
+                    <div class="descripcion">
+                        {{ producto.descripcion }}
+                    </div>
+
+                    {% endif %}
+
+
+                    {% if producto.stock|int == 0 %}
+
+                    <div class="estado agotado">
+                        🔴 Agotado
+                    </div>
+
+                    {% else %}
+
+                    <div class="estado disponible">
+                        🟢 Disponible
+                    </div>
+
+                    {% endif %}
+
+
+                    <div class="botones">
+
+                        <a
+                            href="{{ url_for(
+                                'admin.editar',
+                                producto_id=producto.id
+                            ) }}"
+                            class="editar"
+                        >
+                            ✏️ Editar
+                        </a>
+
+
+                        <form
+                            action="{{ url_for(
+                                'admin.cambiar_estado',
+                                producto_id=producto.id
+                            ) }}"
+                            method="POST"
+                        >
+
+                            {% if producto.stock|int == 0 %}
+
+                            <button
+                                type="submit"
+                                class="estado-boton"
+                            >
+                                🟢 Marcar como disponible
+                            </button>
+
+                            {% else %}
+
+                            <button
+                                type="submit"
+                                class="estado-boton"
+                            >
+                                🔴 Marcar como agotado
+                            </button>
+
+                            {% endif %}
+
+                        </form>
+
+
+                        <form
+                            action="{{ url_for(
+                                'admin.eliminar',
+                                producto_id=producto.id
+                            ) }}"
+                            method="POST"
+                            onsubmit="return confirm(
+                                '¿Seguro que quieres eliminar este producto?'
+                            );"
+                        >
+
+                            <button
+                                type="submit"
+                                class="eliminar"
+                            >
+                                🗑️ Eliminar
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <div class="vacio">
+
+            <h3>
+                📦 Todavía no hay productos
+            </h3>
+
+            <p>
+                Agrega tu primer producto usando el formulario de arriba.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </section>
 
 </main>
 
 
-
 <footer>
 
-    <p>
-        Distrivariedades El Progreso
-    </p>
+    Distrivariedades El Progreso · Panel de administración
 
 </footer>
-
 
 </body>
 

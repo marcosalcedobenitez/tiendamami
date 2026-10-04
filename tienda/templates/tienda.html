@@ -5,1142 +5,734 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Distrivariedades El Progreso - Productos para el hogar, belleza, cabello y cuidado de la piel."
+    >
+
+    <meta
+        name="theme-color"
+        content="#8b3a62"
+    >
 
     <title>
-        Distrivariedades El Progreso | Belleza, Maquillaje y Variedades
+        Distrivariedades El Progreso
     </title>
-
-    <meta name="description"
-          content="Distrivariedades El Progreso ofrece productos de cacharrería, maquillaje, cabello, belleza y cuidado de la piel.">
-
-    <meta name="robots"
-          content="index, follow">
-
-    <meta name="author"
-          content="Distrivariedades El Progreso">
-
-    <meta name="theme-color"
-          content="#e8a9c1">
-
-    <meta property="og:type"
-          content="website">
-
-    <meta property="og:title"
-          content="Distrivariedades El Progreso">
-
-    <meta property="og:description"
-          content="Productos de cacharrería, maquillaje, cabello, belleza y cuidado de la piel.">
-
-    <meta property="og:site_name"
-          content="Distrivariedades El Progreso">
-
-    <meta property="og:locale"
-          content="es_CO">
-
-    <link rel="icon"
-          type="image/svg+xml"
-          href="{{ url_for('tienda.static', filename='favicon.svg') }}">
-
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Store",
-        "name": "Distrivariedades El Progreso",
-        "description": "Tienda de productos de cacharrería, maquillaje, cabello, belleza y cuidado de la piel.",
-        "url": "{{ request.url_root }}",
-        "image": "{{ request.url_root }}static/favicon.svg",
-        "priceRange": "$$",
-        "currenciesAccepted": "COP",
-        "paymentAccepted": "Efectivo, transferencia",
-        "sameAs": []
-    }
-    </script>
-
 
     <style>
 
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-
+            margin: 0;
             font-family: Arial, sans-serif;
-
-            background: #fff8f5;
-
-            color: #4b3025;
-
+            background: #fff7fb;
+            color: #4a2c3a;
         }
 
-
-        /* ==================================================
+        /* =========================
            HEADER
-        ================================================== */
+        ========================= */
 
         header {
-
-            background: #e8a9c1;
-
-            color: #4b3025;
-
-            padding: 18px 25px;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            flex-wrap: wrap;
-
-            gap: 15px;
-
+            background: linear-gradient(
+                135deg,
+                #8b3a62,
+                #c45b8c
+            );
+            color: white;
+            padding: 18px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
         }
 
+        .header-contenido {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
 
         .logo {
-
-            font-size: 28px;
-
-            font-weight: bold;
-
-        }
-
-
-        nav {
-
-            display: flex;
-
-            gap: 18px;
-
-            flex-wrap: wrap;
-
-            align-items: center;
-
-        }
-
-
-        nav a {
-
-            color: #4b3025;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-        }
-
-
-        nav a:hover {
-
-            text-decoration: underline;
-
-        }
-
-
-        .boton-carrito-header {
-
-            background: #6b4534;
-
             color: white;
-
-            padding: 9px 14px;
-
-            border-radius: 20px;
-
             text-decoration: none;
-
+            font-size: 22px;
             font-weight: bold;
-
-            cursor: pointer;
-
-            border: none;
-
+            white-space: nowrap;
         }
 
-
-        .boton-carrito-header:hover {
-
-            background: #4b3025;
-
+        .navegacion {
+            display: flex;
+            gap: 8px;
+            align-items: center;
         }
 
+        .navegacion a {
+            color: white;
+            text-decoration: none;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
 
-        /* ==================================================
+        .navegacion a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* =========================
            HERO
-        ================================================== */
+        ========================= */
 
         .hero {
-
-            background: #f3d5df;
-
+            background: linear-gradient(
+                135deg,
+                #fff0f6,
+                #ffe3ee
+            );
             padding: 55px 20px;
-
             text-align: center;
-
         }
 
+        .hero-contenido {
+            max-width: 850px;
+            margin: auto;
+        }
 
         .hero h1 {
-
-            font-size: 38px;
-
-            margin-bottom: 12px;
-
+            margin: 0 0 15px;
+            font-size: clamp(30px, 6vw, 52px);
+            color: #7c3155;
         }
-
 
         .hero p {
-
-            font-size: 18px;
-
-            max-width: 700px;
-
-            margin: auto;
-
-            line-height: 1.5;
-
+            margin: 0 auto 25px;
+            max-width: 650px;
+            color: #6d5360;
+            font-size: 17px;
+            line-height: 1.6;
         }
 
+        .boton-hero {
+            display: inline-block;
+            background: #8b3a62;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
 
-        /* ==================================================
+        .boton-hero:hover {
+            background: #702d4e;
+        }
+
+        /* =========================
            CATEGORÍAS
-        ================================================== */
+        ========================= */
+
+        .seccion {
+            max-width: 1150px;
+            margin: auto;
+            padding: 45px 20px;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .titulo-seccion h2 {
+            margin: 0 0 8px;
+            color: #8b3a62;
+            font-size: 30px;
+        }
+
+        .titulo-seccion p {
+            margin: 0;
+            color: #777;
+        }
 
         .categorias {
-
-            padding: 30px 20px 10px;
-
-            text-align: center;
-
-        }
-
-
-        .categorias h2 {
-
-            margin-bottom: 20px;
-
-        }
-
-
-        .botones-categorias {
-
             display: flex;
-
             justify-content: center;
-
             gap: 10px;
-
             flex-wrap: wrap;
-
-        }
-
-
-        .boton-categoria {
-
-            border: none;
-
-            background: #6b4534;
-
-            color: white;
-
-            padding: 10px 18px;
-
-            border-radius: 20px;
-
-            cursor: pointer;
-
-            font-weight: bold;
-
-        }
-
-
-        .boton-categoria:hover {
-
-            background: #4b3025;
-
-        }
-
-
-        .boton-categoria.activo {
-
-            background: #e8a9c1;
-
-            color: #4b3025;
-
-        }
-
-
-        /* ==================================================
-           BÚSQUEDA
-        ================================================== */
-
-        .busqueda {
-
-            max-width: 700px;
-
-            margin: 25px auto 5px;
-
-            padding: 0 20px;
-
-        }
-
-
-        .contenedor-busqueda {
-
-            position: relative;
-
-            display: flex;
-
-            align-items: center;
-
-        }
-
-
-        .icono-busqueda {
-
-            position: absolute;
-
-            left: 15px;
-
-            font-size: 20px;
-
-            pointer-events: none;
-
-        }
-
-
-        #buscador {
-
-            width: 100%;
-
-            padding: 14px 45px 14px 45px;
-
-            border: 2px solid #e8a9c1;
-
-            border-radius: 25px;
-
-            outline: none;
-
-            font-size: 16px;
-
-            color: #4b3025;
-
-            background: white;
-
-        }
-
-
-        #buscador:focus {
-
-            border-color: #6b4534;
-
-        }
-
-
-        .boton-limpiar-busqueda {
-
-            position: absolute;
-
-            right: 12px;
-
-            border: none;
-
-            background: transparent;
-
-            font-size: 20px;
-
-            cursor: pointer;
-
-            color: #777;
-
-            display: none;
-
-        }
-
-
-        /* ==================================================
-           PRODUCTOS
-        ================================================== */
-
-        .productos {
-
-            padding: 35px 20px;
-
-            max-width: 1200px;
-
-            margin: auto;
-
-        }
-
-
-        .productos h2 {
-
-            text-align: center;
-
             margin-bottom: 30px;
-
         }
 
-
-        .grid-productos {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(230px, 300px)
-                );
-
-            gap: 25px;
-
-            justify-content: center;
-
-        }
-
-
-        .producto {
-
-            width: 100%;
-
-            max-width: 300px;
-
+        .categoria-boton {
+            border: 1px solid #e5c7d5;
             background: white;
+            color: #7c3155;
+            padding: 10px 17px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
 
-            border-radius: 15px;
+        .categoria-boton:hover {
+            background: #fff0f6;
+        }
 
-            overflow: hidden;
+        .categoria-boton.activa {
+            background: #8b3a62;
+            color: white;
+            border-color: #8b3a62;
+        }
 
+        /* =========================
+           BUSCADOR
+        ========================= */
+
+        .buscador-contenedor {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .buscador {
+            width: 100%;
+            padding: 15px 18px;
+            border: 1px solid #e2ccd6;
+            border-radius: 14px;
+            background: white;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 3px 12px rgba(100,40,70,0.05);
+        }
+
+        .buscador:focus {
+            border-color: #c45b8c;
             box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.08);
+                0 0 0 3px rgba(196,91,140,0.10);
+        }
 
+        /* =========================
+           PRODUCTOS
+        ========================= */
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(230px, 1fr)
+            );
+            gap: 22px;
+        }
+
+        .producto-card {
+            background: white;
+            border-radius: 17px;
+            overflow: hidden;
+            box-shadow:
+                0 5px 18px rgba(100,40,70,0.08);
+            border: 1px solid #f0e3e9;
             transition:
-                transform 0.2s ease;
-
+                transform 0.2s,
+                box-shadow 0.2s;
         }
 
-
-        .producto:hover {
-
-            transform: translateY(-4px);
-
+        .producto-card:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 9px 25px rgba(100,40,70,0.13);
         }
-
 
         .imagen-producto {
-
+            position: relative;
+            background: #f5f5f5;
             width: 100%;
-
-            height: 220px;
-
-            background: #fff8f5;
-
+            height: 240px;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             overflow: hidden;
-
         }
-
 
         .imagen-producto img {
-
             width: 100%;
-
             height: 100%;
-
             object-fit: contain;
-
             display: block;
-
+            padding: 8px;
         }
 
+        .sin-imagen {
+            width: 100%;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            background: #f2f2f2;
+        }
+
+        .badge-agotado {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #d92d20;
+            color: white;
+            padding: 7px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow:
+                0 3px 8px rgba(0,0,0,0.15);
+        }
+
+        .badge-disponible {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #dff7e7;
+            color: #217a3a;
+            padding: 7px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
 
         .producto-info {
-
-            padding: 18px;
-
+            padding: 17px;
         }
 
+        .producto-categoria {
+            color: #8b3a62;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
 
         .producto-info h3 {
-
-            margin-bottom: 8px;
-
+            margin: 0 0 9px;
+            font-size: 18px;
+            color: #4a2c3a;
         }
 
-
-        .categoria-producto {
-
-            font-size: 14px;
-
-            color: #8a6252;
-
-            margin-bottom: 10px;
-
-        }
-
-
-        .descripcion {
-
-            font-size: 14px;
-
-            margin-bottom: 12px;
-
-            line-height: 1.5;
-
-        }
-
-
-        .precio {
-
+        .producto-precio {
             font-size: 21px;
-
             font-weight: bold;
-
-            color: #6b4534;
-
-            margin-bottom: 8px;
-
+            color: #8b3a62;
+            margin-bottom: 14px;
         }
 
-
-        .stock {
-
-            font-size: 14px;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .sin-stock {
-
-            color: #b00020;
-
-            font-weight: bold;
-
-        }
-
-
-        .botones-producto {
-
+        .producto-acciones {
             display: flex;
-
             flex-direction: column;
-
             gap: 8px;
-
         }
-
 
         .boton-producto {
-
-            display: inline-block;
-
-            background: #e8a9c1;
-
-            color: #4b3025;
-
-            padding: 10px 15px;
-
-            border-radius: 8px;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-            text-align: center;
-
+            width: 100%;
             border: none;
-
+            padding: 11px;
+            border-radius: 9px;
+            text-decoration: none;
+            text-align: center;
             cursor: pointer;
-
             font-size: 14px;
-
+            font-weight: bold;
         }
 
-
-        .boton-producto:hover {
-
-            background: #d992ae;
-
+        .ver-producto {
+            background: #f1dce6;
+            color: #7c3155;
         }
 
+        .ver-producto:hover {
+            background: #e8c7d5;
+        }
 
-        .boton-agregar {
-
-            background: #6b4534;
-
+        .agregar-producto {
+            background: #8b3a62;
             color: white;
-
         }
 
-
-        .boton-agregar:hover {
-
-            background: #4b3025;
-
+        .agregar-producto:hover {
+            background: #702d4e;
         }
 
-
-        .boton-agregar:disabled {
-
-            background: #aaa;
-
+        .boton-agotado {
+            background: #e2e2e2;
+            color: #777;
             cursor: not-allowed;
-
         }
-
 
         .sin-resultados {
-
             display: none;
-
             text-align: center;
-
-            padding: 35px 20px;
-
-            color: #8a6252;
-
-        }
-
-
-        /* ==================================================
-           CARRITO
-        ================================================== */
-
-        .carrito {
-
-            position: fixed;
-
-            top: 0;
-
-            right: -420px;
-
-            width: 400px;
-
-            max-width: 95%;
-
-            height: 100dvh;
-
-            max-height: 100dvh;
-
-            background: white;
-
-            box-shadow:
-                -5px 0 20px rgba(0, 0, 0, 0.2);
-
-            z-index: 2000;
-
-            transition: right 0.3s ease;
-
-            display: flex;
-
-            flex-direction: column;
-
-        }
-
-
-        .carrito.abierto {
-
-            right: 0;
-
-        }
-
-
-        .carrito-header {
-
-            background: #e8a9c1;
-
-            padding: 18px;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            flex-shrink: 0;
-
-        }
-
-
-        .carrito-header h2 {
-
-            margin: 0;
-
-        }
-
-
-        .cerrar-carrito {
-
-            border: none;
-
-            background: transparent;
-
-            font-size: 25px;
-
-            cursor: pointer;
-
-            color: #4b3025;
-
-        }
-
-
-        .carrito-items {
-
-            flex: 1;
-
-            min-height: 0;
-
-            overflow-y: auto;
-
-            padding: 15px;
-
-        }
-
-
-        .carrito-item {
-
-            display: grid;
-
-            grid-template-columns: 65px 1fr;
-
-            gap: 12px;
-
-            padding: 12px 0;
-
-            border-bottom: 1px solid #eee;
-
-        }
-
-
-        .carrito-item img {
-
-            width: 65px;
-
-            height: 65px;
-
-            object-fit: contain;
-
-            background: #fff8f5;
-
-            border-radius: 8px;
-
-        }
-
-
-        .carrito-item h4 {
-
-            margin-bottom: 5px;
-
-        }
-
-
-        .carrito-precio {
-
-            font-weight: bold;
-
-            color: #6b4534;
-
-            margin-bottom: 7px;
-
-        }
-
-
-        .cantidad-controles {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-        }
-
-
-        .cantidad-controles button {
-
-            border: none;
-
-            background: #e8a9c1;
-
-            width: 27px;
-
-            height: 27px;
-
-            border-radius: 5px;
-
-            cursor: pointer;
-
-            font-weight: bold;
-
-        }
-
-
-        .eliminar-item {
-
-            margin-top: 7px;
-
-            border: none;
-
-            background: transparent;
-
-            color: #b00020;
-
-            cursor: pointer;
-
-            font-size: 13px;
-
-        }
-
-
-        .carrito-footer {
-
-            padding: 18px;
-
-            border-top: 1px solid #ddd;
-
-            flex-shrink: 0;
-
-            background: white;
-
-        }
-
-
-        .carrito-total {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            font-size: 20px;
-
-            font-weight: bold;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .boton-whatsapp-carrito {
-
-            width: 100%;
-
-            border: none;
-
-            background: #25d366;
-
-            color: white;
-
-            padding: 12px;
-
-            border-radius: 8px;
-
-            cursor: pointer;
-
-            font-weight: bold;
-
-            margin-bottom: 10px;
-
-            font-size: 15px;
-
-        }
-
-
-        .boton-whatsapp-carrito:hover {
-
-            background: #1ebe5d;
-
-        }
-
-
-        .boton-vaciar {
-
-            width: 100%;
-
-            border: none;
-
-            background: #6b4534;
-
-            color: white;
-
-            padding: 12px;
-
-            border-radius: 8px;
-
-            cursor: pointer;
-
-            font-weight: bold;
-
-        }
-
-
-        .boton-vaciar:hover {
-
-            background: #4b3025;
-
-        }
-
-
-        .carrito-vacio {
-
-            text-align: center;
-
-            padding: 40px 15px;
-
+            padding: 40px 20px;
             color: #777;
-
         }
 
+        .sin-resultados.visible {
+            display: block;
+        }
 
-        /* ==================================================
-           WHATSAPP
-        ================================================== */
+        /* =========================
+           CONTACTO
+        ========================= */
 
-        .whatsapp {
-
-            position: fixed;
-
-            right: 20px;
-
-            bottom: 20px;
-
-            width: 58px;
-
-            height: 58px;
-
-            border-radius: 50%;
-
-            background: #25d366;
-
+        .contacto {
+            background: linear-gradient(
+                135deg,
+                #8b3a62,
+                #c45b8c
+            );
             color: white;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            text-decoration: none;
-
-            font-size: 28px;
-
+            border-radius: 22px;
+            padding: 40px 25px;
+            text-align: center;
             box-shadow:
-                0 4px 12px rgba(0, 0, 0, 0.2);
-
-            z-index: 1000;
-
+                0 7px 25px rgba(100,40,70,0.15);
         }
 
+        .contacto h2 {
+            margin: 0 0 12px;
+            font-size: 30px;
+        }
 
-        .whatsapp:hover {
+        .contacto p {
+            max-width: 600px;
+            margin: 0 auto 22px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
 
+        .boton-whatsapp {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .boton-whatsapp:hover {
             background: #1ebe5d;
-
         }
 
-
-        /* ==================================================
+        /* =========================
            FOOTER
-        ================================================== */
+        ========================= */
 
         footer {
-
-            background: #4b3025;
-
-            color: white;
-
-            padding: 35px 20px;
-
-            margin-top: 40px;
-
+            background: #3e2632;
+            color: #eee;
+            padding: 30px 20px;
+            margin-top: 20px;
         }
-
 
         .footer-contenido {
-
-            max-width: 1100px;
-
+            max-width: 1150px;
             margin: auto;
-
-            text-align: center;
-
-        }
-
-
-        .footer-contenido h3 {
-
-            margin-bottom: 10px;
-
-        }
-
-
-        .footer-contenido p {
-
-            margin-bottom: 15px;
-
-            line-height: 1.5;
-
-        }
-
-
-        .enlaces-legales {
-
             display: flex;
-
             justify-content: center;
-
-            gap: 18px;
-
+            gap: 20px;
             flex-wrap: wrap;
-
-            margin-top: 15px;
-
         }
 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
 
-        .enlaces-legales a {
-
-            color: #f3d5df;
-
+        .footer-links a {
+            color: #f5dce7;
             text-decoration: none;
-
         }
 
-
-        .enlaces-legales a:hover {
-
+        .footer-links a:hover {
             text-decoration: underline;
-
         }
 
+        .copyright {
+            max-width: 1150px;
+            margin: 25px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            color: #cdbfc5;
+            font-size: 13px;
+            text-align: center;
+        }
 
-        /* ==================================================
-           MÓVIL
-        ================================================== */
+        /* =========================
+           BURBUJA CARRITO
+        ========================= */
 
-        @media (max-width: 600px) {
+        .burbuja-carrito {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            border: none;
+            background: #8b3a62;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.25);
+            z-index: 1000;
+        }
+
+        .contador-carrito {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 5px;
+            border-radius: 20px;
+            background: #e53935;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* =========================
+           PANEL CARRITO
+        ========================= */
+
+        .panel-carrito {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: min(400px, 92vw);
+            height: 100vh;
+            background: white;
+            z-index: 1100;
+            box-shadow:
+                -5px 0 20px rgba(0,0,0,0.2);
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-carrito.abierto {
+            right: 0;
+        }
+
+        .cabecera-carrito {
+            background: #8b3a62;
+            color: white;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cabecera-carrito h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .cerrar-carrito {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        .lista-carrito {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .item-carrito {
+            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .item-carrito img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #f5f5f5;
+            padding: 3px;
+            flex-shrink: 0;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .item-precio {
+            color: #8b3a62;
+            font-weight: bold;
+        }
+
+        .eliminar-item {
+            border: none;
+            background: #ffe5e5;
+            color: #b42323;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .total-carrito {
+            padding: 18px;
+            border-top: 1px solid #eee;
+        }
+
+        .total-linea {
+            display: flex;
+            justify-content: space-between;
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .boton-whatsapp-carrito {
+            width: 100%;
+            border: none;
+            background: #25d366;
+            color: white;
+            padding: 13px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .carrito-vacio {
+            text-align: center;
+            color: #888;
+            padding: 40px 15px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 750px) {
 
             header {
-
-                justify-content: center;
-
-                text-align: center;
-
+                position: static;
             }
 
-
-            nav {
-
-                justify-content: center;
-
+            .header-contenido {
+                flex-direction: column;
+                align-items: center;
             }
 
+            .navegacion {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
 
             .hero {
-
                 padding: 40px 18px;
-
             }
 
-
-            .hero h1 {
-
-                font-size: 30px;
-
+            .seccion {
+                padding: 35px 15px;
             }
 
+            .productos-grid {
+                grid-template-columns: repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+                gap: 12px;
+            }
 
-            .hero p {
+            .producto-card {
+                border-radius: 13px;
+            }
 
+            .imagen-producto,
+            .imagen-producto img,
+            .sin-imagen {
+                height: 180px;
+            }
+
+            .imagen-producto img {
+                padding: 6px;
+            }
+
+            .producto-info {
+                padding: 12px;
+            }
+
+            .producto-info h3 {
                 font-size: 16px;
-
             }
 
-
-            .productos {
-
-                padding-left: 15px;
-
-                padding-right: 15px;
-
+            .producto-precio {
+                font-size: 18px;
             }
 
-
-            .grid-productos {
-
-                grid-template-columns:
-                    minmax(0, 300px);
-
-                justify-content: center;
-
+            .boton-producto {
+                font-size: 13px;
+                padding: 10px 7px;
             }
 
-
-            .producto {
-
-                max-width: 300px;
-
-            }
-
-
-            .imagen-producto {
-
-                height: 220px;
-
-            }
-
-
-            .carrito {
-
-                width: 100%;
-
-                max-width: 100%;
-
-            }
-
-
-            .carrito-footer {
-
-                padding: 14px;
-
-            }
-
-
-            .whatsapp {
-
-                width: 52px;
-
-                height: 52px;
-
+            .burbuja-carrito {
                 right: 15px;
-
                 bottom: 15px;
-
-                font-size: 25px;
-
+                width: 58px;
+                height: 58px;
             }
 
+            .footer-links {
+                gap: 12px;
+                font-size: 14px;
+            }
 
-            .enlaces-legales {
+        }
 
-                flex-direction: column;
+        @media (max-width: 430px) {
 
-                gap: 10px;
+            .productos-grid {
+                grid-template-columns: 1fr 1fr;
+            }
 
+            .categoria-boton {
+                padding: 9px 12px;
+                font-size: 13px;
             }
 
         }
@@ -1153,239 +745,205 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-    <div class="logo">
-        DV
-    </div>
-
-
-    <nav>
-
-        <a href="#inicio">
-            Inicio
-        </a>
-
-        <a href="#categorias">
-            Categorías
-        </a>
-
-        <a href="#productos">
-            Productos
-        </a>
+    <div class="header-contenido">
 
         <a
-            href="#"
-            class="boton-carrito-header"
-            onclick="abrirCarrito(); return false;">
-
-            🛒 Carrito
-            <span id="contador-carrito">0</span>
-
+            href="/"
+            class="logo"
+        >
+            Distrivariedades El Progreso
         </a>
 
-    </nav>
+
+        <nav class="navegacion">
+
+            <a href="/">
+                Inicio
+            </a>
+
+            <a href="#productos">
+                Productos
+            </a>
+
+            <a href="#contactanos">
+                Contáctanos
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
 
-<section
-    class="hero"
-    id="inicio">
+<!-- =========================
+     HERO
+========================= -->
 
-    <h1>
-        Distrivariedades El Progreso
-    </h1>
+<section class="hero">
 
-    <p>
-        Encuentra productos de cacharrería,
-        maquillaje, cabello, belleza y cuidado de la piel.
-    </p>
+    <div class="hero-contenido">
 
-</section>
+        <h1>
+            Distrivariedades El Progreso
+        </h1>
 
+        <p>
+            Encuentra productos para el hogar,
+            belleza, cabello y cuidado de la piel.
+            Explora nuestro catálogo y escríbenos
+            por WhatsApp para realizar tu pedido.
+        </p>
 
-<section
-    class="categorias"
-    id="categorias">
-
-    <h2>
-        Categorías
-    </h2>
-
-
-    <div class="botones-categorias">
-
-        <button
-            class="boton-categoria activo"
-            onclick="filtrarProductos('Todos', this)">
-
-            Todos
-
-        </button>
-
-
-        <button
-            class="boton-categoria"
-            onclick="filtrarProductos('Cacharrería', this)">
-
-            Cacharrería
-
-        </button>
-
-
-        <button
-            class="boton-categoria"
-            onclick="filtrarProductos('Maquillaje', this)">
-
-            Maquillaje
-
-        </button>
-
-
-        <button
-            class="boton-categoria"
-            onclick="filtrarProductos('Cabello', this)">
-
-            Cabello
-
-        </button>
-
-
-        <button
-            class="boton-categoria"
-            onclick="filtrarProductos('Cuidado de la piel', this)">
-
-            Cuidado de la piel
-
-        </button>
-
-
-        <button
-            class="boton-categoria"
-            onclick="filtrarProductos('Belleza', this)">
-
-            Belleza
-
-        </button>
+        <a
+            href="#productos"
+            class="boton-hero"
+        >
+            🛍️ Ver productos
+        </a>
 
     </div>
 
 </section>
 
 
-<section class="busqueda">
+<!-- =========================
+     PRODUCTOS
+========================= -->
 
-    <div class="contenedor-busqueda">
+<section
+    class="seccion"
+    id="productos"
+>
 
-        <span class="icono-busqueda">
-            🔎
-        </span>
+
+    <div class="titulo-seccion">
+
+        <h2>
+            🛍️ Nuestros productos
+        </h2>
+
+        <p>
+            Explora nuestras categorías
+        </p>
+
+    </div>
+
+
+    <!-- CATEGORÍAS -->
+
+    <div class="categorias">
+
+        <button
+            type="button"
+            class="categoria-boton activa"
+            data-categoria="Todos"
+        >
+            Todos
+        </button>
+
+        <button
+            type="button"
+            class="categoria-boton"
+            data-categoria="Cacharrería"
+        >
+            Cacharrería
+        </button>
+
+        <button
+            type="button"
+            class="categoria-boton"
+            data-categoria="Belleza"
+        >
+            Belleza
+        </button>
+
+        <button
+            type="button"
+            class="categoria-boton"
+            data-categoria="Cabello"
+        >
+            Cabello
+        </button>
+
+        <button
+            type="button"
+            class="categoria-boton"
+            data-categoria="Cuidado de la piel"
+        >
+            Cuidado de la piel
+        </button>
+
+    </div>
+
+
+    <!-- BUSCADOR -->
+
+    <div class="buscador-contenedor">
 
         <input
             type="search"
             id="buscador"
-            placeholder="Buscar producto por nombre..."
-            autocomplete="off">
-
-        <button
-            id="boton-limpiar-busqueda"
-            class="boton-limpiar-busqueda"
-            onclick="limpiarBusqueda()"
-            aria-label="Limpiar búsqueda">
-
-            ×
-
-        </button>
+            class="buscador"
+            placeholder="🔎 Buscar un producto..."
+            autocomplete="off"
+        >
 
     </div>
 
-</section>
 
-
-<section
-    class="productos"
-    id="productos">
-
-    <h2>
-        Nuestros productos
-    </h2>
-
+    <!-- GRID -->
 
     <div
-        class="grid-productos"
-        id="grid-productos">
+        class="productos-grid"
+        id="productos-grid"
+    >
+
 
         {% for producto in productos %}
 
-        <article
-            class="producto"
-            data-categoria="{{ producto.categoria }}"
-            data-nombre="{{ producto.nombre }}">
+            <article
+                class="producto-card"
+                data-categoria="{{ producto.categoria }}"
+                data-nombre="{{ producto.nombre }}"
+            >
 
-            <a
-                href="{{ url_for('tienda.ver_producto', producto_id=producto.id) }}">
 
                 <div class="imagen-producto">
 
                     {% if producto.foto %}
 
-                    <img
-                        src="{{ producto.foto }}"
-                        alt="{{ producto.nombre }} - {{ producto.categoria }}"
-                        loading="lazy">
+                        <img
+                            src="{{ producto.foto }}"
+                            alt="{{ producto.nombre }}"
+                            loading="lazy"
+                        >
 
                     {% else %}
 
-                    <img
-                        src="https://via.placeholder.com/500x400?text=DV"
-                        alt="Producto de Distrivariedades El Progreso"
-                        loading="lazy">
+                        <div class="sin-imagen">
+                            📷 Sin imagen
+                        </div>
 
                     {% endif %}
 
-                </div>
 
-            </a>
+                    {% if producto.stock|int == 0 %}
 
-
-            <div class="producto-info">
-
-                <h3>
-                    {{ producto.nombre }}
-                </h3>
-
-
-                <div class="categoria-producto">
-                    {{ producto.categoria }}
-                </div>
-
-
-                <div class="descripcion">
-                    {{ producto.descripcion }}
-                </div>
-
-
-                <div class="precio">
-
-                    ${{ "{:,.0f}".format(
-                        producto.precio|int
-                    ).replace(",", ".") }}
-
-                </div>
-
-
-                <div class="stock">
-
-                    {% if producto.stock|int > 0 %}
-
-                        Disponible:
-                        {{ producto.stock }}
+                        <span class="badge-agotado">
+                            🔴 AGOTADO
+                        </span>
 
                     {% else %}
 
-                        <span class="sin-stock">
-                            Agotado
+                        <span class="badge-disponible">
+                            🟢 DISPONIBLE
                         </span>
 
                     {% endif %}
@@ -1393,107 +951,239 @@
                 </div>
 
 
-                <div class="botones-producto">
-
-                    <a
-                        href="{{ url_for(
-                            'tienda.ver_producto',
-                            producto_id=producto.id
-                        ) }}"
-                        class="boton-producto">
-
-                        Ver producto
-
-                    </a>
+                <div class="producto-info">
 
 
-                    {% if producto.stock|int > 0 %}
+                    <div class="producto-categoria">
+                        {{ producto.categoria }}
+                    </div>
 
-                    <button
-                        class="boton-producto boton-agregar"
-                        data-id="{{ producto.id }}"
-                        data-nombre="{{ producto.nombre }}"
-                        data-precio="{{ producto.precio }}"
-                        data-stock="{{ producto.stock }}"
-                        data-foto="{{ producto.foto or '' }}"
-                        onclick="agregarAlCarritoDesdeBoton(this)">
 
-                        🛒 Añadir al carrito
+                    <h3>
+                        {{ producto.nombre }}
+                    </h3>
 
-                    </button>
 
-                    {% endif %}
+                    <div class="producto-precio">
+
+                        ${{ "{:,.0f}".format(
+                            producto.precio|float
+                        ).replace(",", ".") }}
+
+                    </div>
+
+
+                    <div class="producto-acciones">
+
+
+                        <a
+                            href="{{ url_for(
+                                'tienda.ver_producto',
+                                producto_id=producto.id
+                            ) }}"
+                            class="boton-producto ver-producto"
+                        >
+                            👁️ Ver producto
+                        </a>
+
+
+                        {% if producto.stock|int == 0 %}
+
+                            <button
+                                type="button"
+                                class="boton-producto boton-agotado"
+                                disabled
+                            >
+                                🔴 Agotado
+                            </button>
+
+                        {% else %}
+
+                            <button
+                                type="button"
+                                class="boton-producto agregar-producto"
+                                data-id="{{ producto.id }}"
+                                data-nombre="{{ producto.nombre }}"
+                                data-precio="{{ producto.precio|int }}"
+                                data-stock="{{ producto.stock|int }}"
+                                data-foto="{{ producto.foto or '' }}"
+                            >
+                                🛒 Añadir al carrito
+                            </button>
+
+                        {% endif %}
+
+
+                    </div>
 
                 </div>
 
-            </div>
-
-        </article>
+            </article>
 
         {% endfor %}
+
 
     </div>
 
 
     <div
+        class="sin-resultados"
         id="sin-resultados"
-        class="sin-resultados">
+    >
 
         <h3>
             😕 No encontramos productos
         </h3>
 
         <p>
-            Prueba con otro nombre o categoría.
+            Intenta buscar otro nombre o seleccionar otra categoría.
         </p>
 
     </div>
 
+
 </section>
 
 
-<!-- ==================================================
-     CARRITO
-================================================== -->
+<!-- =========================
+     CONTACTANOS
+========================= -->
 
-<div
-    id="carrito"
-    class="carrito">
+<section
+    class="seccion"
+    id="contactanos"
+>
 
 
-    <div class="carrito-header">
+    <div class="contacto">
+
+        <h2>
+            📞 Contáctanos
+        </h2>
+
+        <p>
+            ¿Te interesa algún producto o tienes alguna pregunta?
+            Escríbenos directamente por WhatsApp y estaremos
+            atentos para ayudarte.
+        </p>
+
+        <a
+            href="https://wa.me/573213179470?text=Hola%2C%20estoy%20interesado%20en%20los%20productos%20de%20Distrivariedades%20El%20Progreso."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="boton-whatsapp"
+        >
+            📱 Escribir por WhatsApp
+        </a>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-contenido">
+
+        <div class="footer-links">
+
+            <a href="/aviso-legal">
+                Aviso legal
+            </a>
+
+            <a href="/privacidad">
+                Privacidad
+            </a>
+
+            <a href="/cookies">
+                Cookies
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Distrivariedades El Progreso.
+        Todos los derechos reservados.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     BURBUJA CARRITO
+========================= -->
+
+<button
+    type="button"
+    class="burbuja-carrito"
+    id="abrir-carrito"
+    aria-label="Abrir carrito"
+>
+
+    🛒
+
+    <span
+        class="contador-carrito"
+        id="contador-carrito"
+    >
+        0
+    </span>
+
+</button>
+
+
+<!-- =========================
+     PANEL CARRITO
+========================= -->
+
+<aside
+    class="panel-carrito"
+    id="panel-carrito"
+>
+
+
+    <div class="cabecera-carrito">
 
         <h2>
             🛒 Mi carrito
         </h2>
 
-
         <button
+            type="button"
             class="cerrar-carrito"
-            onclick="cerrarCarrito()">
-
+            id="cerrar-carrito"
+        >
             ×
-
         </button>
 
     </div>
 
 
     <div
-        id="carrito-items"
-        class="carrito-items">
-    </div>
+        class="lista-carrito"
+        id="lista-carrito"
+    ></div>
 
 
-    <div class="carrito-footer">
+    <div class="total-carrito">
 
-        <div class="carrito-total">
+        <div class="total-linea">
 
             <span>
-                Total:
+                Total
             </span>
 
-            <span id="carrito-total">
+            <span id="total-carrito">
                 $0
             </span>
 
@@ -1501,105 +1191,107 @@
 
 
         <button
+            type="button"
             class="boton-whatsapp-carrito"
-            onclick="pedirPorWhatsApp()">
-
-            📲 Pedir por WhatsApp
-
-        </button>
-
-
-        <button
-            class="boton-vaciar"
-            onclick="vaciarCarrito()">
-
-            Vaciar carrito
-
+            id="whatsapp-carrito"
+        >
+            📱 Pedir por WhatsApp
         </button>
 
     </div>
 
-</div>
+
+</aside>
 
 
-<!-- ==================================================
-     WHATSAPP
-================================================== -->
-
-<a
-    href="https://wa.me/573213179470"
-    class="whatsapp"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Contactar por WhatsApp">
-
-    💬
-
-</a>
-
-
-<footer>
-
-    <div class="footer-contenido">
-
-        <h3>
-            Distrivariedades El Progreso
-        </h3>
-
-
-        <p>
-            Variedad, belleza y productos para
-            tu día a día en un solo lugar.
-        </p>
-
-
-        <p>
-            © 2026 Distrivariedades El Progreso.
-            Todos los derechos reservados.
-        </p>
-
-
-        <div class="enlaces-legales">
-
-            <a href="{{ url_for('tienda.aviso_legal') }}">
-                Aviso legal
-            </a>
-
-            <a href="{{ url_for('tienda.privacidad') }}">
-                Política de privacidad
-            </a>
-
-            <a href="{{ url_for('tienda.cookies') }}">
-                Política de cookies
-            </a>
-
-        </div>
-
-    </div>
-
-</footer>
-
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-    /* ==================================================
-       VARIABLES
-    ================================================== */
 
-    let categoriaActual = "Todos";
+    /* =========================
+       ELEMENTOS
+    ========================= */
 
-    let textoBusqueda = "";
+    const buscador =
+        document.getElementById("buscador");
+
+    const botonesCategoria =
+        document.querySelectorAll(
+            ".categoria-boton"
+        );
+
+    const productos =
+        document.querySelectorAll(
+            ".producto-card"
+        );
+
+    const sinResultados =
+        document.getElementById(
+            "sin-resultados"
+        );
+
+    const abrirCarrito =
+        document.getElementById(
+            "abrir-carrito"
+        );
+
+    const cerrarCarrito =
+        document.getElementById(
+            "cerrar-carrito"
+        );
+
+    const panelCarrito =
+        document.getElementById(
+            "panel-carrito"
+        );
+
+    const listaCarrito =
+        document.getElementById(
+            "lista-carrito"
+        );
+
+    const contadorCarrito =
+        document.getElementById(
+            "contador-carrito"
+        );
+
+    const totalCarrito =
+        document.getElementById(
+            "total-carrito"
+        );
+
+    const whatsappCarrito =
+        document.getElementById(
+            "whatsapp-carrito"
+        );
 
 
-    /* ==================================================
+    let categoriaActual =
+        "Todos";
+
+
+    /* =========================
        CARRITO
-    ================================================== */
+    ========================= */
 
     function obtenerCarrito() {
 
-        return JSON.parse(
-            localStorage.getItem("carritoDV")
-        ) || [];
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "carritoDV"
+                )
+            ) || [];
+
+        } catch (error) {
+
+            return [];
+
+        }
 
     }
 
@@ -1614,175 +1306,38 @@
     }
 
 
-    /* ==================================================
-       AGREGAR AL CARRITO DESDE TARJETA
-    ================================================== */
+    function dinero(valor) {
 
-    function agregarAlCarritoDesdeBoton(boton) {
-
-        const id =
-            String(boton.dataset.id);
-
-        const nombre =
-            boton.dataset.nombre;
-
-        const precio =
-            Number(boton.dataset.precio);
-
-        const stock =
-            Number(boton.dataset.stock);
-
-        const foto =
-            boton.dataset.foto || "";
-
-
-        let carrito =
-            obtenerCarrito();
-
-
-        const existente =
-            carrito.find(
-                item =>
-                    String(item.id) === id
-            );
-
-
-        if (existente) {
-
-            if (
-                Number(existente.cantidad) <
-                stock
-            ) {
-
-                existente.cantidad =
-                    Number(existente.cantidad) + 1;
-
-            } else {
-
-                alert(
-                    "No puedes agregar más unidades de este producto."
-                );
-
-                return;
-
-            }
-
-        } else {
-
-            carrito.push({
-
-                id: id,
-
-                nombre: nombre,
-
-                precio: precio,
-
-                foto: foto,
-
-                stock: stock,
-
-                cantidad: 1
-
-            });
-
-        }
-
-
-        guardarCarrito(carrito);
-
-        mostrarCarrito();
-
-
-        const textoOriginal =
-            boton.textContent;
-
-
-        boton.textContent =
-            "✓ Añadido al carrito";
-
-
-        boton.style.background =
-            "#25d366";
-
-
-        boton.style.color =
-            "white";
-
-
-        setTimeout(
-            function() {
-
-                boton.textContent =
-                    textoOriginal;
-
-                boton.style.background =
-                    "";
-
-                boton.style.color =
-                    "";
-
-            },
-            1000
-        );
+        return "$" +
+            Number(valor)
+                .toLocaleString("es-CO");
 
     }
 
 
-    /* ==================================================
-       MOSTRAR CARRITO
-    ================================================== */
-
-    function mostrarCarrito() {
+    function actualizarCarrito() {
 
         const carrito =
             obtenerCarrito();
 
 
-        const contenedor =
-            document.getElementById(
-                "carrito-items"
-            );
+        contadorCarrito.textContent =
+            carrito.length;
 
 
-        const totalElemento =
-            document.getElementById(
-                "carrito-total"
-            );
-
-
-        const contador =
-            document.getElementById(
-                "contador-carrito"
-            );
-
-
-        contenedor.innerHTML = "";
+        listaCarrito.innerHTML = "";
 
 
         if (carrito.length === 0) {
 
-            contenedor.innerHTML = `
-
+            listaCarrito.innerHTML = `
                 <div class="carrito-vacio">
-
-                    🛒
-
-                    <br><br>
-
-                    Tu carrito está vacío.
-
+                    🛒 Tu carrito está vacío.
                 </div>
-
             `;
 
-
-            totalElemento.textContent =
+            totalCarrito.textContent =
                 "$0";
-
-
-            contador.textContent =
-                "0";
-
 
             return;
 
@@ -1791,314 +1346,232 @@
 
         let total = 0;
 
-        let cantidadTotal = 0;
-
 
         carrito.forEach(
-            function(item, indice) {
+            function(producto, indice) {
 
-                const cantidad =
-                    Number(item.cantidad);
-
-
-                const precio =
-                    Number(item.precio);
+                total +=
+                    Number(
+                        producto.precio
+                    );
 
 
-                const stock =
-                    Number(item.stock);
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className =
+                    "item-carrito";
 
 
-                const subtotal =
-                    precio * cantidad;
+                item.innerHTML = `
+                    <img
+                        src="${producto.foto || ""}"
+                        alt="${producto.nombre}"
+                    >
 
+                    <div class="item-info">
 
-                total += subtotal;
+                        <strong>
+                            ${producto.nombre}
+                        </strong>
 
-
-                cantidadTotal += cantidad;
-
-
-                const imagen =
-                    item.foto ||
-                    "https://via.placeholder.com/100x100?text=DV";
-
-
-                const itemHTML = `
-
-                    <div class="carrito-item">
-
-                        <img
-                            src="${imagen}"
-                            alt="${item.nombre}">
-
-                        <div>
-
-                            <h4>
-                                ${item.nombre}
-                            </h4>
-
-                            <div class="carrito-precio">
-
-                                $${subtotal.toLocaleString(
-                                    "es-CO"
-                                )}
-
-                            </div>
-
-                            <div class="cantidad-controles">
-
-                                <button
-                                    onclick="cambiarCantidad(
-                                        ${indice},
-                                        -1
-                                    )">
-
-                                    −
-
-                                </button>
-
-
-                                <span>
-                                    ${cantidad}
-                                </span>
-
-
-                                <button
-                                    onclick="cambiarCantidad(
-                                        ${indice},
-                                        1
-                                    )">
-
-                                    +
-
-                                </button>
-
-                            </div>
-
-
-                            <button
-                                class="eliminar-item"
-                                onclick="eliminarDelCarrito(
-                                    ${indice}
-                                )">
-
-                                🗑️ Eliminar
-
-                            </button>
-
-                        </div>
+                        <span class="item-precio">
+                            ${dinero(producto.precio)}
+                        </span>
 
                     </div>
 
+                    <button
+                        type="button"
+                        class="eliminar-item"
+                        data-indice="${indice}"
+                        aria-label="Eliminar producto"
+                    >
+                        ×
+                    </button>
                 `;
 
 
-                contenedor.innerHTML +=
-                    itemHTML;
-
-            }
-        );
-
-
-        totalElemento.textContent =
-            "$" +
-            total.toLocaleString(
-                "es-CO"
-            );
-
-
-        contador.textContent =
-            cantidadTotal;
-
-    }
-
-
-    /* ==================================================
-       CAMBIAR CANTIDAD
-    ================================================== */
-
-    function cambiarCantidad(
-        indice,
-        cambio
-    ) {
-
-        const carrito =
-            obtenerCarrito();
-
-
-        const item =
-            carrito[indice];
-
-
-        if (!item) {
-
-            return;
-
-        }
-
-
-        const nuevaCantidad =
-            Number(item.cantidad) +
-            cambio;
-
-
-        if (nuevaCantidad <= 0) {
-
-            carrito.splice(
-                indice,
-                1
-            );
-
-        } else if (
-            nuevaCantidad <=
-            Number(item.stock)
-        ) {
-
-            item.cantidad =
-                nuevaCantidad;
-
-        } else {
-
-            alert(
-                "No hay más unidades disponibles."
-            );
-
-            return;
-
-        }
-
-
-        guardarCarrito(carrito);
-
-        mostrarCarrito();
-
-    }
-
-
-    /* ==================================================
-       ELIMINAR
-    ================================================== */
-
-    function eliminarDelCarrito(
-        indice
-    ) {
-
-        const carrito =
-            obtenerCarrito();
-
-
-        carrito.splice(
-            indice,
-            1
-        );
-
-
-        guardarCarrito(carrito);
-
-        mostrarCarrito();
-
-    }
-
-
-    /* ==================================================
-       VACIAR CARRITO
-    ================================================== */
-
-    function vaciarCarrito() {
-
-        localStorage.removeItem(
-            "carritoDV"
-        );
-
-
-        mostrarCarrito();
-
-    }
-
-
-    /* ==================================================
-       ABRIR CARRITO
-    ================================================== */
-
-    function abrirCarrito() {
-
-        document
-            .getElementById("carrito")
-            .classList
-            .add("abierto");
-
-
-        mostrarCarrito();
-
-    }
-
-
-    /* ==================================================
-       CERRAR CARRITO
-    ================================================== */
-
-    function cerrarCarrito() {
-
-        document
-            .getElementById("carrito")
-            .classList
-            .remove("abierto");
-
-    }
-
-
-    /* ==================================================
-       FILTRAR PRODUCTOS
-    ================================================== */
-
-    function filtrarProductos(
-        categoria,
-        boton
-    ) {
-
-        categoriaActual =
-            categoria;
-
-
-        const botones =
-            document.querySelectorAll(
-                ".boton-categoria"
-            );
-
-
-        botones.forEach(
-            function(item) {
-
-                item.classList.remove(
-                    "activo"
+                listaCarrito.appendChild(
+                    item
                 );
 
             }
         );
 
 
-        if (boton) {
+        totalCarrito.textContent =
+            dinero(total);
 
-            boton.classList.add(
-                "activo"
+
+        document
+            .querySelectorAll(
+                ".eliminar-item"
+            )
+            .forEach(
+                function(boton) {
+
+                    boton.addEventListener(
+                        "click",
+                        function() {
+
+                            const indice =
+                                Number(
+                                    boton.dataset.indice
+                                );
+
+
+                            const carritoActual =
+                                obtenerCarrito();
+
+
+                            carritoActual.splice(
+                                indice,
+                                1
+                            );
+
+
+                            guardarCarrito(
+                                carritoActual
+                            );
+
+
+                            actualizarCarrito();
+
+                        }
+                    );
+
+                }
             );
-
-        }
-
-
-        aplicarFiltros();
 
     }
 
 
-    /* ==================================================
-       BÚSQUEDA
-    ================================================== */
+    /* =========================
+       AGREGAR PRODUCTO
+    ========================= */
 
-    function normalizarTexto(
-        texto
+    function agregarProducto(
+        boton
     ) {
+
+        const producto = {
+
+            id: Number(
+                boton.dataset.id
+            ),
+
+            nombre:
+                boton.dataset.nombre,
+
+            precio: Number(
+                boton.dataset.precio
+            ),
+
+            stock: Number(
+                boton.dataset.stock
+            ),
+
+            foto:
+                boton.dataset.foto
+
+        };
+
+
+        /*
+            SEGURIDAD EXTRA:
+
+            1 = disponible
+            0 = agotado
+        */
+
+        if (producto.stock <= 0) {
+
+            alert(
+                "Este producto está agotado."
+            );
+
+            return;
+
+        }
+
+
+        const carrito =
+            obtenerCarrito();
+
+
+        const yaExiste =
+            carrito.some(
+                function(item) {
+
+                    return Number(
+                        item.id
+                    ) === producto.id;
+
+                }
+            );
+
+
+        if (yaExiste) {
+
+            alert(
+                "Este producto ya está en tu carrito."
+            );
+
+            return;
+
+        }
+
+
+        carrito.push(
+            producto
+        );
+
+
+        guardarCarrito(
+            carrito
+        );
+
+
+        actualizarCarrito();
+
+
+        alert(
+            "✅ Producto agregado al carrito."
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".agregar-producto"
+        )
+        .forEach(
+            function(boton) {
+
+                boton.addEventListener(
+                    "click",
+                    function() {
+
+                        agregarProducto(
+                            boton
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* =========================
+       FILTROS
+    ========================= */
+
+    function normalizarTexto(texto) {
 
         return texto
             .toLowerCase()
@@ -2111,17 +1584,11 @@
     }
 
 
-    function aplicarFiltros() {
+    function filtrarProductos() {
 
-        const productos =
-            document.querySelectorAll(
-                ".producto"
-            );
-
-
-        const busqueda =
+        const texto =
             normalizarTexto(
-                textoBusqueda
+                buscador.value.trim()
             );
 
 
@@ -2132,7 +1599,9 @@
             function(producto) {
 
                 const categoria =
-                    producto.dataset.categoria;
+                    normalizarTexto(
+                        producto.dataset.categoria
+                    );
 
 
                 const nombre =
@@ -2141,20 +1610,25 @@
                     );
 
 
-                const coincideCategoria =
-                    categoriaActual === "Todos" ||
-                    categoria === categoriaActual;
+                const categoriaCoincide =
+                    categoriaActual === "Todos"
+                    ||
+                    categoria ===
+                        normalizarTexto(
+                            categoriaActual
+                        );
 
 
-                const coincideBusqueda =
+                const nombreCoincide =
                     nombre.includes(
-                        busqueda
+                        texto
                     );
 
 
                 if (
-                    coincideCategoria &&
-                    coincideBusqueda
+                    categoriaCoincide
+                    &&
+                    nombreCoincide
                 ) {
 
                     producto.style.display =
@@ -2173,197 +1647,192 @@
         );
 
 
-        const sinResultados =
-            document.getElementById(
-                "sin-resultados"
+        if (encontrados === 0) {
+
+            sinResultados.classList.add(
+                "visible"
             );
-
-
-        if (
-            encontrados === 0 &&
-            productos.length > 0
-        ) {
-
-            sinResultados.style.display =
-                "block";
 
         } else {
 
-            sinResultados.style.display =
-                "none";
+            sinResultados.classList.remove(
+                "visible"
+            );
 
         }
 
     }
 
 
-    function limpiarBusqueda() {
+    botonesCategoria.forEach(
+        function(boton) {
 
-        const buscador =
-            document.getElementById(
-                "buscador"
-            );
+            boton.addEventListener(
+                "click",
+                function() {
 
+                    botonesCategoria
+                        .forEach(
+                            function(
+                                otroBoton
+                            ) {
 
-        buscador.value = "";
+                                otroBoton
+                                    .classList
+                                    .remove(
+                                        "activa"
+                                    );
 
-        textoBusqueda = "";
-
-
-        document
-            .getElementById(
-                "boton-limpiar-busqueda"
-            )
-            .style.display =
-            "none";
-
-
-        aplicarFiltros();
-
-    }
+                            }
+                        );
 
 
-    /* ==================================================
-       PEDIR POR WHATSAPP
-    ================================================== */
-
-    function pedirPorWhatsApp() {
-
-        const carrito =
-            obtenerCarrito();
-
-
-        if (carrito.length === 0) {
-
-            alert(
-                "🛒 Tu carrito está vacío."
-            );
-
-            return;
-
-        }
-
-
-        let mensaje =
-            "Hola, quiero hacer un pedido en Distrivariedades El Progreso:\n\n";
-
-
-        let total = 0;
-
-
-        carrito.forEach(
-            function(item) {
-
-                const subtotal =
-                    Number(item.precio) *
-                    Number(item.cantidad);
-
-
-                total += subtotal;
-
-
-                mensaje +=
-                    "• " +
-                    item.nombre +
-                    " x" +
-                    item.cantidad +
-                    " - $" +
-                    subtotal.toLocaleString(
-                        "es-CO"
-                    ) +
-                    "\n";
-
-            }
-        );
-
-
-        mensaje +=
-            "\n💰 Total: $" +
-            total.toLocaleString(
-                "es-CO"
-            );
-
-
-        mensaje +=
-            "\n\nQuedo atento/a para confirmar el pedido.";
-
-
-        const numeroWhatsApp =
-            "573213179470";
-
-
-        const url =
-            "https://wa.me/" +
-            numeroWhatsApp +
-            "?text=" +
-            encodeURIComponent(
-                mensaje
-            );
-
-
-        window.open(
-            url,
-            "_blank"
-        );
-
-    }
-
-
-    /* ==================================================
-       EVENTO DE BÚSQUEDA
-    ================================================== */
-
-    document
-        .getElementById("buscador")
-        .addEventListener(
-            "input",
-            function() {
-
-                textoBusqueda =
-                    this.value;
-
-
-                const botonLimpiar =
-                    document.getElementById(
-                        "boton-limpiar-busqueda"
+                    boton.classList.add(
+                        "activa"
                     );
 
 
-                if (
-                    this.value.trim() !== ""
-                ) {
+                    categoriaActual =
+                        boton.dataset.categoria;
 
-                    botonLimpiar.style.display =
-                        "block";
 
-                } else {
-
-                    botonLimpiar.style.display =
-                        "none";
+                    filtrarProductos();
 
                 }
-
-
-                aplicarFiltros();
-
-            }
-        );
-
-
-    /* ==================================================
-       CARGAR
-    ================================================== */
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function() {
-
-            mostrarCarrito();
-
-            aplicarFiltros();
+            );
 
         }
     );
+
+
+    buscador.addEventListener(
+        "input",
+        filtrarProductos
+    );
+
+
+    /* =========================
+       ABRIR / CERRAR CARRITO
+    ========================= */
+
+    abrirCarrito.addEventListener(
+        "click",
+        function() {
+
+            panelCarrito.classList.add(
+                "abierto"
+            );
+
+        }
+    );
+
+
+    cerrarCarrito.addEventListener(
+        "click",
+        function() {
+
+            panelCarrito.classList.remove(
+                "abierto"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       WHATSAPP DEL CARRITO
+    ========================= */
+
+    whatsappCarrito.addEventListener(
+        "click",
+        function() {
+
+            const carrito =
+                obtenerCarrito();
+
+
+            if (carrito.length === 0) {
+
+                alert(
+                    "Tu carrito está vacío."
+                );
+
+                return;
+
+            }
+
+
+            let mensaje =
+                "Hola, estoy interesado en estos productos:%0A%0A";
+
+
+            carrito.forEach(
+                function(producto) {
+
+                    mensaje +=
+                        "• "
+                        +
+                        producto.nombre
+                        +
+                        " - "
+                        +
+                        dinero(
+                            producto.precio
+                        )
+                        +
+                        "%0A";
+
+                }
+            );
+
+
+            const total =
+                carrito.reduce(
+                    function(
+                        acumulado,
+                        producto
+                    ) {
+
+                        return acumulado
+                            +
+                            Number(
+                                producto.precio
+                            );
+
+                    },
+                    0
+                );
+
+
+            mensaje +=
+                "%0ATotal: "
+                +
+                dinero(total);
+
+
+            const url =
+                "https://wa.me/573213179470?text="
+                +
+                mensaje;
+
+
+            window.open(
+                url,
+                "_blank"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       INICIAR
+    ========================= */
+
+    actualizarCarrito();
+
+    filtrarProductos();
+
 
 </script>
 

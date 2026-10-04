@@ -5,277 +5,257 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Editar producto - Distrivariedades El Progreso</title>
+    <title>
+        Editar producto - Distrivariedades El Progreso
+    </title>
 
     <style>
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-
-            background: #fffaf7;
-
-            color: #4b3028;
+            background: #fff7fb;
+            color: #4a2c3a;
         }
 
         header {
-            background: #f3d6df;
-
+            background: linear-gradient(
+                135deg,
+                #8b3a62,
+                #c45b8c
+            );
+            color: white;
             padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
         }
 
-        .encabezado {
+        .header-contenido {
             max-width: 900px;
-
             margin: auto;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
-            gap: 20px;
+            gap: 15px;
         }
 
-        .logo {
+        .titulo-header h1 {
+            margin: 0;
+            font-size: 23px;
+        }
+
+        .titulo-header p {
+            margin: 5px 0 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .navegacion {
             display: flex;
-
-            align-items: center;
-
-            gap: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
-        .logo-dv {
-            width: 50px;
-
-            height: 50px;
-
-            border-radius: 50%;
-
-            background: #7b4b3a;
-
+        .navegacion a {
             color: white;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-weight: bold;
-        }
-
-        .logo h1 {
-            font-size: 20px;
-
-            color: #6b4033;
-        }
-
-        .logo p {
-            font-size: 13px;
-
-            margin-top: 3px;
-
-            color: #815f55;
-        }
-
-        .volver {
             text-decoration: none;
-
-            background: #7b4b3a;
-
-            color: white;
-
-            padding: 10px 15px;
-
+            padding: 9px 13px;
             border-radius: 8px;
+            background: rgba(255,255,255,0.15);
+            font-size: 14px;
+        }
 
-            font-weight: bold;
+        .navegacion a:hover {
+            background: rgba(255,255,255,0.25);
         }
 
         main {
             max-width: 900px;
-
-            margin: 35px auto;
-
-            padding: 0 20px;
+            margin: 30px auto;
+            padding: 0 18px 40px;
         }
 
         .panel {
             background: white;
-
-            padding: 30px;
-
             border-radius: 18px;
-
-            border: 1px solid #efd9d2;
-
-            box-shadow:
-                0 5px 18px rgba(80,40,30,0.08);
+            padding: 28px;
+            box-shadow: 0 5px 20px rgba(100, 40, 70, 0.08);
         }
 
-        h2 {
-            color: #6b4033;
+        .panel h2 {
+            margin-top: 0;
+            color: #8b3a62;
+        }
 
+        .descripcion-panel {
+            color: #777;
+            margin-top: -8px;
             margin-bottom: 25px;
-
-            text-align: center;
         }
 
         .formulario {
             display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
             gap: 18px;
         }
 
         .campo {
             display: flex;
-
             flex-direction: column;
+            gap: 7px;
         }
 
-        .completo {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            margin-bottom: 7px;
-
+        .campo label {
             font-weight: bold;
-
-            color: #64453c;
+            font-size: 14px;
         }
 
-        input,
-        select,
-        textarea {
+        .campo input,
+        .campo select,
+        .campo textarea {
             width: 100%;
-
             padding: 12px;
-
-            border: 1px solid #dfc8c0;
-
-            border-radius: 9px;
-
-            font-family: Arial, sans-serif;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            font-family: inherit;
         }
 
-        textarea {
-            min-height: 110px;
+        .campo input:focus,
+        .campo select:focus,
+        .campo textarea:focus {
+            border-color: #c45b8c;
+            box-shadow: 0 0 0 3px rgba(196, 91, 140, 0.1);
+        }
 
+        .campo textarea {
+            min-height: 130px;
             resize: vertical;
         }
 
+        .ayuda {
+            font-size: 13px;
+            color: #888;
+        }
+
         .imagen-actual {
-            margin-bottom: 12px;
+            margin-top: 5px;
+            padding: 15px;
+            background: #faf7f9;
+            border-radius: 12px;
+        }
+
+        .imagen-actual p {
+            margin-top: 0;
+            font-weight: bold;
         }
 
         .imagen-actual img {
-            width: 150px;
-
-            height: 150px;
-
+            width: 220px;
+            max-width: 100%;
+            height: 220px;
             object-fit: cover;
-
             border-radius: 12px;
-
-            border: 1px solid #efd9d2;
+            display: block;
         }
 
-        .selector-imagen {
-            padding: 15px;
-
-            background: #fff8f5;
-
-            border: 1px dashed #cda99d;
-
-            border-radius: 10px;
+        .estado-box {
+            padding: 17px;
+            border-radius: 12px;
+            background: #fdf1f6;
+            border: 1px solid #f0d6e2;
         }
 
-        .selector-imagen input {
-            border: none;
-
-            padding: 5px;
+        .estado-box label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
-        .ayuda {
-            margin-top: 8px;
+        .estado-box input {
+            width: 19px;
+            height: 19px;
+            accent-color: #8b3a62;
+        }
 
-            font-size: 12px;
+        .estado-actual {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #777;
+        }
 
-            color: #8b7068;
+        .botones {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 5px;
         }
 
         .boton {
-            grid-column: 1 / -1;
-
             border: none;
-
-            padding: 13px;
-
+            padding: 13px 20px;
             border-radius: 10px;
-
-            background: #7b4b3a;
-
-            color: white;
-
-            font-size: 16px;
-
-            font-weight: bold;
-
             cursor: pointer;
-        }
-
-        .boton:hover {
-            background: #633b2e;
-        }
-
-        footer {
-            margin-top: 60px;
-
-            background: #5b3b32;
-
-            color: white;
-
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
             text-align: center;
+        }
 
-            padding: 25px;
+        .guardar {
+            background: #8b3a62;
+            color: white;
+        }
+
+        .guardar:hover {
+            background: #702d4e;
+        }
+
+        .volver {
+            background: #eee5e9;
+            color: #5d3b4b;
+        }
+
+        .volver:hover {
+            background: #e1d5da;
         }
 
         @media (max-width: 700px) {
 
-            .encabezado {
+            .header-contenido {
                 flex-direction: column;
-
-                text-align: center;
+                align-items: flex-start;
             }
 
-            .formulario {
-                grid-template-columns: 1fr;
+            .navegacion {
+                justify-content: flex-start;
             }
 
-            .completo {
-                grid-column: auto;
-            }
-
-            .boton {
-                grid-column: auto;
+            main {
+                margin-top: 20px;
             }
 
             .panel {
                 padding: 20px;
+            }
+
+            .botones {
+                flex-direction: column;
+            }
+
+            .boton {
+                width: 100%;
             }
 
         }
@@ -290,63 +270,67 @@
 
 <header>
 
-    <div class="encabezado">
+    <div class="header-contenido">
 
-        <div class="logo">
+        <div class="titulo-header">
 
-            <div class="logo-dv">
-                DV
-            </div>
+            <h1>
+                Distrivariedades El Progreso
+            </h1>
 
-            <div>
-
-                <h1>
-                    Distrivariedades El Progreso
-                </h1>
-
-                <p>
-                    Editar producto
-                </p>
-
-            </div>
+            <p>
+                Editar producto
+            </p>
 
         </div>
 
 
-        <a
-            href="/admin"
-            class="volver"
-        >
-            ← Administración
-        </a>
+        <nav class="navegacion">
+
+            <a href="/admin">
+                📦 Productos
+            </a>
+
+            <a href="{{ url_for('admin.configuracion') }}">
+                ⚙️ Configuración
+            </a>
+
+            <a href="{{ url_for('admin.logout') }}">
+                🚪 Salir
+            </a>
+
+        </nav>
 
     </div>
 
 </header>
 
 
-
 <main>
 
 
-    <div class="panel">
+    <section class="panel">
 
         <h2>
             ✏️ Editar producto
         </h2>
 
+        <p class="descripcion-panel">
+            Modifica la información del producto.
+        </p>
+
 
         <form
-            class="formulario"
             method="POST"
             enctype="multipart/form-data"
+            class="formulario"
         >
 
 
             <div class="campo">
 
                 <label for="nombre">
-                    Nombre
+                    Nombre del producto
                 </label>
 
                 <input
@@ -358,7 +342,6 @@
                 >
 
             </div>
-
 
 
             <div class="campo">
@@ -383,12 +366,12 @@
                     </option>
 
                     <option
-                        value="Maquillaje"
-                        {% if producto.categoria == "Maquillaje" %}
+                        value="Belleza"
+                        {% if producto.categoria == "Belleza" %}
                             selected
                         {% endif %}
                     >
-                        Maquillaje
+                        Belleza
                     </option>
 
                     <option
@@ -409,19 +392,9 @@
                         Cuidado de la piel
                     </option>
 
-                    <option
-                        value="Belleza"
-                        {% if producto.categoria == "Belleza" %}
-                            selected
-                        {% endif %}
-                    >
-                        Belleza
-                    </option>
-
                 </select>
 
             </div>
-
 
 
             <div class="campo">
@@ -434,83 +407,100 @@
                     type="number"
                     id="precio"
                     name="precio"
-                    value="{{ producto.precio }}"
                     min="0"
+                    step="1"
+                    value="{{ producto.precio|int }}"
                     required
                 >
+
+                <span class="ayuda">
+                    Precio en pesos colombianos.
+                </span>
 
             </div>
 
 
+            <div class="estado-box">
 
-            <div class="campo">
+                <label for="agotado">
 
-                <label for="stock">
-                    Stock
-                </label>
+                    <input
+                        type="checkbox"
+                        id="agotado"
+                        name="agotado"
+                        value="1"
+                        {% if producto.stock|int == 0 %}
+                            checked
+                        {% endif %}
+                    >
 
-                <input
-                    type="number"
-                    id="stock"
-                    name="stock"
-                    value="{{ producto.stock }}"
-                    min="0"
-                    required
-                >
+                    🔴 Marcar producto como agotado
 
-            </div>
-
-
-
-            <div class="campo completo">
-
-                <label>
-                    Imagen actual
                 </label>
 
 
-                <div class="imagen-actual">
+                <div class="estado-actual">
 
-                    {% if producto.foto %}
+                    Estado actual:
 
-                        <img
-                            src="{{ producto.foto }}"
-                            alt="{{ producto.nombre }}"
-                        >
+                    {% if producto.stock|int == 0 %}
+
+                        <strong style="color: #b42323;">
+                            🔴 Agotado
+                        </strong>
 
                     {% else %}
 
-                        <p>
-                            Este producto no tiene imagen.
-                        </p>
+                        <strong style="color: #217a3a;">
+                            🟢 Disponible
+                        </strong>
 
                     {% endif %}
 
                 </div>
 
+            </div>
 
-                <div class="selector-imagen">
 
-                    <input
-                        type="file"
-                        name="foto"
-                        accept="image/*"
-                    >
+            {% if producto.foto %}
 
-                    <p class="ayuda">
+                <div class="imagen-actual">
 
-                        Si seleccionas una nueva imagen,
-                        reemplazará la actual.
-
+                    <p>
+                        📷 Imagen actual
                     </p>
 
+                    <img
+                        src="{{ producto.foto }}"
+                        alt="{{ producto.nombre }}"
+                    >
+
                 </div>
+
+            {% endif %}
+
+
+            <div class="campo">
+
+                <label for="foto">
+                    Cambiar imagen
+                </label>
+
+                <input
+                    type="file"
+                    id="foto"
+                    name="foto"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+                <span class="ayuda">
+                    Si no seleccionas una imagen, se conservará la actual.
+                </span>
 
             </div>
 
 
-
-            <div class="campo completo">
+            <div class="campo">
 
                 <label for="descripcion">
                     Descripción
@@ -525,34 +515,32 @@
             </div>
 
 
+            <div class="botones">
 
-            <button
-                class="boton"
-                type="submit"
-            >
+                <button
+                    type="submit"
+                    class="boton guardar"
+                >
+                    💾 Guardar cambios
+                </button>
 
-                💾 Guardar cambios
 
-            </button>
+                <a
+                    href="/admin"
+                    class="boton volver"
+                >
+                    ↩️ Volver
+                </a>
+
+            </div>
 
 
         </form>
 
-
-    </div>
+    </section>
 
 
 </main>
-
-
-
-<footer>
-
-    <p>
-        Distrivariedades El Progreso
-    </p>
-
-</footer>
 
 
 </body>

@@ -13,21 +13,14 @@ from config.settings import (
 )
 
 
-# ==========================================================
-# CONEXIÓN CON SUPABASE
-# ==========================================================
-
 supabase = create_client(
     SUPABASE_URL,
     SUPABASE_KEY
 )
 
+
 print("✅ Conexión con Supabase preparada")
 
-
-# ==========================================================
-# OBTENER TODOS LOS PRODUCTOS
-# ==========================================================
 
 def obtener_productos():
 
@@ -69,19 +62,15 @@ def obtener_productos():
         return []
 
 
-# ==========================================================
-# OBTENER UN PRODUCTO
-# ==========================================================
-
 def obtener_producto(producto_id):
 
     productos = obtener_productos()
 
     producto = next(
         (
-            p
-            for p in productos
-            if int(p["id"]) == int(producto_id)
+            producto
+            for producto in productos
+            if int(producto["id"]) == int(producto_id)
         ),
         None
     )
@@ -89,28 +78,14 @@ def obtener_producto(producto_id):
     return producto
 
 
-# ==========================================================
-# OPTIMIZAR IMAGEN
-# ==========================================================
-
 def optimizar_imagen(archivo):
 
     if not archivo or not archivo.filename:
-
         return None
 
     try:
 
-        # --------------------------------------------------
-        # Abrir imagen
-        # --------------------------------------------------
-
         imagen = Image.open(archivo)
-
-        # --------------------------------------------------
-        # Convertir a RGB
-        # Evita problemas con PNG, RGBA, etc.
-        # --------------------------------------------------
 
         if imagen.mode in ("RGBA", "LA", "P"):
 
@@ -121,14 +96,15 @@ def optimizar_imagen(archivo):
             )
 
             if imagen.mode == "P":
-
                 imagen = imagen.convert("RGBA")
 
             fondo.paste(
                 imagen,
-                mask=imagen.getchannel("A")
-                if imagen.mode == "RGBA"
-                else None
+                mask=(
+                    imagen.getchannel("A")
+                    if imagen.mode == "RGBA"
+                    else None
+                )
             )
 
             imagen = fondo
@@ -137,10 +113,6 @@ def optimizar_imagen(archivo):
 
             imagen = imagen.convert("RGB")
 
-        # --------------------------------------------------
-        # Tamaño máximo
-        # --------------------------------------------------
-
         max_ancho = 1200
         max_alto = 1200
 
@@ -148,10 +120,6 @@ def optimizar_imagen(archivo):
             (max_ancho, max_alto),
             Image.Resampling.LANCZOS
         )
-
-        # --------------------------------------------------
-        # Guardar como WebP
-        # --------------------------------------------------
 
         memoria = BytesIO()
 
@@ -182,21 +150,12 @@ def optimizar_imagen(archivo):
         return None
 
 
-# ==========================================================
-# SUBIR IMAGEN
-# ==========================================================
-
 def subir_imagen(archivo):
 
     if not archivo or not archivo.filename:
-
         return ""
 
     try:
-
-        # --------------------------------------------------
-        # Comprobar extensión
-        # --------------------------------------------------
 
         nombre_original = secure_filename(
             archivo.filename
@@ -221,33 +180,21 @@ def subir_imagen(archivo):
 
             return ""
 
-        # --------------------------------------------------
-        # Optimizar
-        # --------------------------------------------------
-
         contenido = optimizar_imagen(
             archivo
         )
 
         if not contenido:
-
             return ""
-
-        # --------------------------------------------------
-        # Crear nombre único
-        # --------------------------------------------------
 
         nombre_unico = (
             str(uuid.uuid4())
             + ".webp"
         )
 
-        # --------------------------------------------------
-        # Subir a Supabase Storage
-        # --------------------------------------------------
-
-        supabase.storage \
-            .from_(STORAGE_BUCKET) \
+        (
+            supabase.storage
+            .from_(STORAGE_BUCKET)
             .upload(
                 nombre_unico,
                 contenido,
@@ -256,10 +203,7 @@ def subir_imagen(archivo):
                     "upsert": "false"
                 }
             )
-
-        # --------------------------------------------------
-        # Obtener URL pública
-        # --------------------------------------------------
+        )
 
         foto_url = (
             supabase.storage
@@ -286,15 +230,11 @@ def subir_imagen(archivo):
         return ""
 
 
-# ==========================================================
-# CREAR PRODUCTO
-# ==========================================================
-
 def crear_producto(
     nombre,
     categoria,
     precio,
-    stock,
+    agotado,
     descripcion,
     archivo
 ):
@@ -303,18 +243,16 @@ def crear_producto(
         archivo
     )
 
+    # 1 = disponible
+    # 0 = agotado
+    stock = 0 if agotado else 1
+
     nuevo_producto = {
-
         "nombre": nombre,
-
         "categoria": categoria,
-
         "precio": precio,
-
         "stock": stock,
-
         "descripcion": descripcion,
-
         "foto": foto_url
     }
 
@@ -352,29 +290,24 @@ def crear_producto(
         return None
 
 
-# ==========================================================
-# ACTUALIZAR PRODUCTO
-# ==========================================================
-
 def actualizar_producto(
     producto_id,
     nombre,
     categoria,
     precio,
-    stock,
+    agotado,
     descripcion
 ):
 
+    # 1 = disponible
+    # 0 = agotado
+    stock = 0 if agotado else 1
+
     datos = {
-
         "nombre": nombre,
-
         "categoria": categoria,
-
         "precio": precio,
-
         "stock": stock,
-
         "descripcion": descripcion
     }
 
@@ -384,7 +317,10 @@ def actualizar_producto(
             supabase
             .table("productos")
             .update(datos)
-            .eq("id", producto_id)
+            .eq(
+                "id",
+                producto_id
+            )
             .execute()
         )
 
@@ -409,9 +345,64 @@ def actualizar_producto(
         return None
 
 
-# ==========================================================
-# ELIMINAR PRODUCTO
-# ==========================================================
+def cambiar_estado_producto(
+    producto_id,
+    agotado
+):
+
+    # 1 = disponible
+    # 0 = agotado
+    stock = 0 if agotado else 1
+
+    datos = {
+        "stock": stock
+    }
+
+    try:
+
+        respuesta = (
+            supabase
+            .table("productos")
+            .update(datos)
+            .eq(
+                "id",
+                producto_id
+            )
+            .execute()
+        )
+
+        if respuesta.data:
+
+            if agotado:
+
+                print(
+                    "🔴 Producto marcado como agotado."
+                )
+
+            else:
+
+                print(
+                    "🟢 Producto marcado como disponible."
+                )
+
+            return respuesta.data[0]
+
+        print(
+            "⚠️ No se pudo cambiar el estado del producto."
+        )
+
+        return None
+
+    except Exception as error:
+
+        print(
+            "❌ Error cambiando estado del producto:"
+        )
+
+        print(error)
+
+        return None
+
 
 def eliminar_producto(producto_id):
 
@@ -421,7 +412,10 @@ def eliminar_producto(producto_id):
             supabase
             .table("productos")
             .delete()
-            .eq("id", producto_id)
+            .eq(
+                "id",
+                producto_id
+            )
             .execute()
         )
 
