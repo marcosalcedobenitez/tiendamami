@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>
+        Página no encontrada - Distrivariedades El Progreso
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            font-family: Arial, sans-serif;
+
+            background: #f8eee9;
+
+            color: #4b3028;
+        }
+
+        .contenedor {
+            width: 100%;
+
+            max-width: 550px;
+
+            text-align: center;
+        }
+
+        .tarjeta {
+            background: white;
+
+            padding: 45px 30px;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 10px 30px rgba(80, 40, 30, 0.12);
+        }
+
+        .numero {
+            margin: 0;
+
+            font-size: 90px;
+
+            line-height: 1;
+
+            font-weight: bold;
+
+            color: #8b4f3d;
+        }
+
+        h1 {
+            margin: 15px 0 10px;
+
+            color: #7a4434;
+
+            font-size: 28px;
+        }
+
+        p {
+            margin: 0 auto;
+
+            max-width: 420px;
+
+            color: #8d7067;
+
+            line-height: 1.6;
+
+            font-size: 16px;
+        }
+
+        .boton {
+            display: inline-block;
+
+            margin-top: 28px;
+
+            padding: 13px 25px;
+
+            border-radius: 10px;
+
+            background: #8b4f3d;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: background 0.2s;
+        }
+
+        .boton:hover {
+            background: #713e30;
+        }
+
+        .emoji {
+            font-size: 42px;
+
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 600px) {
+
+            .tarjeta {
+                padding: 35px 22px;
+            }
+
+            .numero {
+                font-size: 70px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="contenedor">
+
+
+    <div class="tarjeta">
+
+        <div class="emoji">
+            🛍️
+        </div>
+
+
+        <h2 class="numero">
+            404
+        </h2>
+
+
+        <h1>
+            Página no encontrada
+        </h1>
+
+
+        <p>
+
+            Parece que esta página se perdió entre
+            tantas variedades 😅.
+
+            <br>
+
+            La dirección que buscas no existe o
+            ya no está disponible.
+
+        </p>
+
+
+        <a
+            href="{{ url_for('tienda.inicio') }}"
+            class="boton"
+        >
+
+            🏠 Volver a la tienda
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

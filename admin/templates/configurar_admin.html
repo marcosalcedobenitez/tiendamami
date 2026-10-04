@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Configurar administrador - Distrivariedades El Progreso</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8eee9;
+            color: #4b3028;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(80, 40, 30, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #7a4434;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #8d7067;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dfc8bf;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #a85d48;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #8b4f3d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #713e30;
+        }
+
+        .volver {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #8b4f3d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .volver:hover {
+            text-decoration: underline;
+        }
+
+        .aviso {
+            margin-top: 20px;
+            padding: 12px;
+            background: #fff5f1;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #76574e;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+
+            .contenedor {
+                margin: 25px auto;
+            }
+
+            .tarjeta {
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <div class="tarjeta">
+
+            <h1>⚙️ Configurar administrador</h1>
+
+            <p class="subtitulo">
+                Registra los datos del administrador de
+                Distrivariedades El Progreso.
+            </p>
+
+            <form method="POST">
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Nombre del administrador"
+                    required
+                >
+
+                <label for="telefono">
+                    Número de celular
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Ejemplo: 3001234567"
+                    required
+                >
+
+                <label for="usuario">
+                    Usuario
+                </label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Usuario para iniciar sesión"
+                    required
+                >
+
+                <label for="contrasena">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="contrasena"
+                    name="contrasena"
+                    placeholder="Crea una contraseña segura"
+                    required
+                >
+
+                <button type="submit">
+                    Guardar configuración
+                </button>
+
+            </form>
+
+            <div class="aviso">
+                🔐 Estos datos serán utilizados para proteger
+                el acceso al panel de administración.
+                El número de celular quedará preparado para
+                futuras funciones de recuperación de cuenta.
+            </div>
+
+            <a
+                href="{{ url_for('tienda.inicio') }}"
+                class="volver"
+            >
+                ← Volver a la tienda
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

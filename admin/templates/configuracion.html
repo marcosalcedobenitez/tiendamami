@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Configuración - Distrivariedades El Progreso
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f8eee9;
+
+            color: #4b3028;
+        }
+
+        .contenedor {
+            width: 90%;
+
+            max-width: 550px;
+
+            margin: 40px auto;
+        }
+
+        .tarjeta {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(80, 40, 30, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+
+            margin-top: 0;
+
+            color: #7a4434;
+        }
+
+        .subtitulo {
+            text-align: center;
+
+            color: #8d7067;
+
+            margin-bottom: 25px;
+
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+
+            margin-top: 16px;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #dfc8bf;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #a85d48;
+        }
+
+        .ayuda {
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 12px;
+
+            color: #8d7067;
+        }
+
+        .seccion-seguridad {
+            margin-top: 28px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #ead9d3;
+        }
+
+        .seccion-seguridad h2 {
+            margin: 0 0 8px;
+
+            color: #7a4434;
+
+            font-size: 19px;
+        }
+
+        .seccion-seguridad p {
+            margin-bottom: 15px;
+
+            color: #8d7067;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+        .boton {
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #8b4f3d;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background: #713e30;
+        }
+
+        .volver {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #8b4f3d;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .volver:hover {
+            text-decoration: underline;
+        }
+
+        .aviso {
+            margin-top: 20px;
+
+            padding: 14px;
+
+            background: #fff5f1;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            color: #76574e;
+
+            line-height: 1.5;
+        }
+
+        .error {
+            margin-bottom: 18px;
+
+            padding: 12px;
+
+            background: #fde8ed;
+
+            border: 1px solid #e6b8c4;
+
+            border-radius: 10px;
+
+            color: #8b3f59;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .exito {
+            margin-bottom: 18px;
+
+            padding: 12px;
+
+            background: #e9f6ed;
+
+            border: 1px solid #b9ddc3;
+
+            border-radius: 10px;
+
+            color: #356b43;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+
+            .contenedor {
+                margin: 20px auto;
+            }
+
+            .tarjeta {
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="contenedor">
+
+
+    <div class="tarjeta">
+
+
+        <h1>
+            ⚙️ Configuración
+        </h1>
+
+
+        <p class="subtitulo">
+
+            Administra los datos de acceso de
+            Distrivariedades El Progreso.
+
+        </p>
+
+
+        {% if error %}
+
+            <div class="error">
+                ⚠️ {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        {% if exito %}
+
+            <div class="exito">
+                ✅ {{ exito }}
+            </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+
+            <label for="nombre">
+                Nombre del administrador
+            </label>
+
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                value="{{ administrador['nombre'] }}"
+                required
+            >
+
+
+            <label for="telefono">
+                Número de celular
+            </label>
+
+            <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                value="{{ administrador['telefono'] }}"
+                required
+            >
+
+            <span class="ayuda">
+
+                Este número quedará registrado para
+                futuras funciones de recuperación.
+
+            </span>
+
+
+            <label for="usuario">
+                Usuario
+            </label>
+
+            <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                value="{{ administrador['usuario'] }}"
+                required
+            >
+
+
+
+            <div class="seccion-seguridad">
+
+                <h2>
+                    🔐 Cambiar contraseña
+                </h2>
+
+                <p>
+
+                    Para cambiar la contraseña debes
+                    introducir primero la contraseña actual.
+
+                </p>
+
+
+                <label for="contrasena_actual">
+                    Contraseña actual
+                </label>
+
+                <input
+                    type="password"
+                    id="contrasena_actual"
+                    name="contrasena_actual"
+                    placeholder="Escribe tu contraseña actual"
+                >
+
+
+                <label for="nueva_contrasena">
+                    Nueva contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="nueva_contrasena"
+                    name="nueva_contrasena"
+                    placeholder="Escribe la nueva contraseña"
+                >
+
+
+                <label for="confirmar_contrasena">
+                    Confirmar nueva contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmar_contrasena"
+                    name="confirmar_contrasena"
+                    placeholder="Repite la nueva contraseña"
+                >
+
+                <span class="ayuda">
+
+                    Si no quieres cambiar la contraseña,
+                    deja estos tres campos vacíos.
+
+                </span>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="boton"
+            >
+
+                💾 Guardar cambios
+
+            </button>
+
+
+        </form>
+
+
+        <div class="aviso">
+
+            📱 Más adelante podremos agregar la recuperación
+            mediante un código enviado al número registrado.
+
+        </div>
+
+
+        <a
+            href="{{ url_for('admin.panel') }}"
+            class="volver"
+        >
+
+            ← Volver al administrador
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

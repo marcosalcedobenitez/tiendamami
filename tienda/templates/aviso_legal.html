@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Aviso legal de Distrivariedades El Progreso."
+    >
+
+    <title>
+        Aviso legal - Distrivariedades El Progreso
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f8eee9;
+
+            color: #4b3028;
+
+            line-height: 1.7;
+        }
+
+        .contenedor {
+            width: 90%;
+
+            max-width: 850px;
+
+            margin: 40px auto;
+        }
+
+        .tarjeta {
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(80, 40, 30, 0.12);
+        }
+
+        h1 {
+            margin-top: 0;
+
+            color: #7a4434;
+        }
+
+        h2 {
+            margin-top: 28px;
+
+            color: #8b4f3d;
+        }
+
+        p {
+            color: #5f4840;
+        }
+
+        .volver {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 12px 20px;
+
+            border-radius: 10px;
+
+            background: #8b4f3d;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .volver:hover {
+            background: #713e30;
+        }
+
+        @media (max-width: 600px) {
+
+            .contenedor {
+                margin: 20px auto;
+            }
+
+            .tarjeta {
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="contenedor">
+
+    <div class="tarjeta">
+
+        <h1>
+            Aviso legal
+        </h1>
+
+
+        <p>
+            Bienvenido a Distrivariedades El Progreso.
+            Este sitio web tiene como finalidad presentar
+            los productos y variedades ofrecidos por nuestro
+            establecimiento y facilitar el contacto con los
+            clientes.
+        </p>
+
+
+        <h2>
+            1. Identificación
+        </h2>
+
+        <p>
+            <strong>Nombre comercial:</strong>
+            Distrivariedades El Progreso
+        </p>
+
+        <p>
+            <strong>Actividad:</strong>
+            Comercialización de productos de cacharrería,
+            belleza, cuidado personal, maquillaje, productos
+            para el cabello y otras variedades.
+        </p>
+
+
+        <h2>
+            2. Uso del sitio web
+        </h2>
+
+        <p>
+            El contenido de este sitio se proporciona con
+            fines informativos y comerciales. Los precios,
+            productos, disponibilidad e información mostrada
+            pueden cambiar sin previo aviso.
+        </p>
+
+
+        <h2>
+            3. Productos y disponibilidad
+        </h2>
+
+        <p>
+            La publicación de un producto en el sitio web
+            no garantiza que permanezca disponible de forma
+            indefinida. La disponibilidad se confirma al
+            momento de realizar la solicitud de compra.
+        </p>
+
+
+        <h2>
+            4. Contacto y pedidos
+        </h2>
+
+        <p>
+            Los clientes podrán comunicarse con
+            Distrivariedades El Progreso mediante los medios
+            de contacto disponibles en el sitio web.
+        </p>
+
+
+        <h2>
+            5. Propiedad del contenido
+        </h2>
+
+        <p>
+            Los textos, elementos gráficos, diseño y demás
+            contenidos propios utilizados en este sitio no
+            deberán ser reproducidos o utilizados con fines
+            comerciales sin autorización.
+        </p>
+
+
+        <h2>
+            6. Modificaciones
+        </h2>
+
+        <p>
+            Distrivariedades El Progreso podrá actualizar,
+            modificar o retirar contenidos del sitio cuando
+            sea necesario.
+        </p>
+
+
+        <a
+            href="{{ url_for('tienda.inicio') }}"
+            class="volver"
+        >
+            ← Volver a la tienda
+        </a>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

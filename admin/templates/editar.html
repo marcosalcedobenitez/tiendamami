@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Editar producto - Distrivariedades El Progreso</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #fffaf7;
+
+            color: #4b3028;
+        }
+
+        header {
+            background: #f3d6df;
+
+            padding: 20px;
+        }
+
+        .encabezado {
+            max-width: 900px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .logo-dv {
+            width: 50px;
+
+            height: 50px;
+
+            border-radius: 50%;
+
+            background: #7b4b3a;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+
+            color: #6b4033;
+        }
+
+        .logo p {
+            font-size: 13px;
+
+            margin-top: 3px;
+
+            color: #815f55;
+        }
+
+        .volver {
+            text-decoration: none;
+
+            background: #7b4b3a;
+
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+
+            margin: 35px auto;
+
+            padding: 0 20px;
+        }
+
+        .panel {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid #efd9d2;
+
+            box-shadow:
+                0 5px 18px rgba(80,40,30,0.08);
+        }
+
+        h2 {
+            color: #6b4033;
+
+            margin-bottom: 25px;
+
+            text-align: center;
+        }
+
+        .formulario {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .campo {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .completo {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+            color: #64453c;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #dfc8c0;
+
+            border-radius: 9px;
+
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            min-height: 110px;
+
+            resize: vertical;
+        }
+
+        .imagen-actual {
+            margin-bottom: 12px;
+        }
+
+        .imagen-actual img {
+            width: 150px;
+
+            height: 150px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            border: 1px solid #efd9d2;
+        }
+
+        .selector-imagen {
+            padding: 15px;
+
+            background: #fff8f5;
+
+            border: 1px dashed #cda99d;
+
+            border-radius: 10px;
+        }
+
+        .selector-imagen input {
+            border: none;
+
+            padding: 5px;
+        }
+
+        .ayuda {
+            margin-top: 8px;
+
+            font-size: 12px;
+
+            color: #8b7068;
+        }
+
+        .boton {
+            grid-column: 1 / -1;
+
+            border: none;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: #7b4b3a;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background: #633b2e;
+        }
+
+        footer {
+            margin-top: 60px;
+
+            background: #5b3b32;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+
+            .encabezado {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .formulario {
+                grid-template-columns: 1fr;
+            }
+
+            .completo {
+                grid-column: auto;
+            }
+
+            .boton {
+                grid-column: auto;
+            }
+
+            .panel {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="encabezado">
+
+        <div class="logo">
+
+            <div class="logo-dv">
+                DV
+            </div>
+
+            <div>
+
+                <h1>
+                    Distrivariedades El Progreso
+                </h1>
+
+                <p>
+                    Editar producto
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="/admin"
+            class="volver"
+        >
+            ← Administración
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+    <div class="panel">
+
+        <h2>
+            ✏️ Editar producto
+        </h2>
+
+
+        <form
+            class="formulario"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+
+            <div class="campo">
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    value="{{ producto.nombre }}"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="campo">
+
+                <label for="categoria">
+                    Categoría
+                </label>
+
+                <select
+                    id="categoria"
+                    name="categoria"
+                    required
+                >
+
+                    <option
+                        value="Cacharrería"
+                        {% if producto.categoria == "Cacharrería" %}
+                            selected
+                        {% endif %}
+                    >
+                        Cacharrería
+                    </option>
+
+                    <option
+                        value="Maquillaje"
+                        {% if producto.categoria == "Maquillaje" %}
+                            selected
+                        {% endif %}
+                    >
+                        Maquillaje
+                    </option>
+
+                    <option
+                        value="Cabello"
+                        {% if producto.categoria == "Cabello" %}
+                            selected
+                        {% endif %}
+                    >
+                        Cabello
+                    </option>
+
+                    <option
+                        value="Cuidado de la piel"
+                        {% if producto.categoria == "Cuidado de la piel" %}
+                            selected
+                        {% endif %}
+                    >
+                        Cuidado de la piel
+                    </option>
+
+                    <option
+                        value="Belleza"
+                        {% if producto.categoria == "Belleza" %}
+                            selected
+                        {% endif %}
+                    >
+                        Belleza
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="campo">
+
+                <label for="precio">
+                    Precio
+                </label>
+
+                <input
+                    type="number"
+                    id="precio"
+                    name="precio"
+                    value="{{ producto.precio }}"
+                    min="0"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="campo">
+
+                <label for="stock">
+                    Stock
+                </label>
+
+                <input
+                    type="number"
+                    id="stock"
+                    name="stock"
+                    value="{{ producto.stock }}"
+                    min="0"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="campo completo">
+
+                <label>
+                    Imagen actual
+                </label>
+
+
+                <div class="imagen-actual">
+
+                    {% if producto.foto %}
+
+                        <img
+                            src="{{ producto.foto }}"
+                            alt="{{ producto.nombre }}"
+                        >
+
+                    {% else %}
+
+                        <p>
+                            Este producto no tiene imagen.
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="selector-imagen">
+
+                    <input
+                        type="file"
+                        name="foto"
+                        accept="image/*"
+                    >
+
+                    <p class="ayuda">
+
+                        Si seleccionas una nueva imagen,
+                        reemplazará la actual.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="campo completo">
+
+                <label for="descripcion">
+                    Descripción
+                </label>
+
+                <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    required
+                >{{ producto.descripcion }}</textarea>
+
+            </div>
+
+
+
+            <button
+                class="boton"
+                type="submit"
+            >
+
+                💾 Guardar cambios
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        Distrivariedades El Progreso
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

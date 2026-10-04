@@ -1,0 +1,484 @@
+import os
+import uuid
+from io import BytesIO
+
+from PIL import Image
+from werkzeug.utils import secure_filename
+from supabase import create_client
+
+from config.settings import (
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    STORAGE_BUCKET
+)
+
+
+# ==========================================================
+# CONEXIÓN CON SUPABASE
+# ==========================================================
+
+supabase = create_client(
+    SUPABASE_URL,
+    SUPABASE_KEY
+)
+
+print("✅ Conexión con Supabase preparada")
+
+
+# ==========================================================
+# PRODUCTOS DE PRUEBA
+# ==========================================================
+
+productos_prueba = [
+    {
+        "id": 1,
+        "nombre": "Crema hidratante",
+        "categoria": "Cuidado de la piel",
+        "precio": 25000,
+        "stock": 10,
+        "descripcion": (
+            "Crema hidratante para el cuidado diario de la piel."
+        ),
+        "foto": ""
+    },
+    {
+        "id": 2,
+        "nombre": "Labial",
+        "categoria": "Maquillaje",
+        "precio": 15000,
+        "stock": 8,
+        "descripcion": (
+            "Labial para complementar tu maquillaje."
+        ),
+        "foto": ""
+    },
+    {
+        "id": 3,
+        "nombre": "Shampoo",
+        "categoria": "Cabello",
+        "precio": 22000,
+        "stock": 6,
+        "descripcion": (
+            "Producto para el cuidado y limpieza del cabello."
+        ),
+        "foto": ""
+    }
+]
+
+
+# ==========================================================
+# OBTENER TODOS LOS PRODUCTOS
+# ==========================================================
+
+def obtener_productos():
+
+    try:
+
+        respuesta = (
+            supabase
+            .table("productos")
+            .select("*")
+            .order("id")
+            .execute()
+        )
+
+        productos = respuesta.data
+
+        if productos:
+
+            print(
+                f"✅ Productos cargados desde Supabase: "
+                f"{len(productos)}"
+            )
+
+            return productos
+
+        print(
+            "ℹ️ La tabla productos está vacía. "
+            "Usando productos de prueba."
+        )
+
+        return productos_prueba
+
+    except Exception as error:
+
+        print(
+            "❌ Error leyendo productos desde Supabase:"
+        )
+
+        print(error)
+
+        return productos_prueba
+
+
+# ==========================================================
+# OBTENER UN PRODUCTO
+# ==========================================================
+
+def obtener_producto(producto_id):
+
+    productos = obtener_productos()
+
+    producto = next(
+        (
+            p
+            for p in productos
+            if int(p["id"]) == int(producto_id)
+        ),
+        None
+    )
+
+    return producto
+
+
+# ==========================================================
+# OPTIMIZAR IMAGEN
+# ==========================================================
+
+def optimizar_imagen(archivo):
+
+    if not archivo or not archivo.filename:
+
+        return None
+
+    try:
+
+        # --------------------------------------------------
+        # Abrir imagen
+        # --------------------------------------------------
+
+        imagen = Image.open(archivo)
+
+        # --------------------------------------------------
+        # Convertir a RGB
+        # Evita problemas con PNG, RGBA, etc.
+        # --------------------------------------------------
+
+        if imagen.mode in ("RGBA", "LA", "P"):
+
+            fondo = Image.new(
+                "RGB",
+                imagen.size,
+                "white"
+            )
+
+            if imagen.mode == "P":
+
+                imagen = imagen.convert("RGBA")
+
+            fondo.paste(
+                imagen,
+                mask=imagen.getchannel("A")
+                if imagen.mode == "RGBA"
+                else None
+            )
+
+            imagen = fondo
+
+        else:
+
+            imagen = imagen.convert("RGB")
+
+        # --------------------------------------------------
+        # Tamaño máximo
+        # --------------------------------------------------
+
+        max_ancho = 1200
+        max_alto = 1200
+
+        imagen.thumbnail(
+            (max_ancho, max_alto),
+            Image.Resampling.LANCZOS
+        )
+
+        # --------------------------------------------------
+        # Guardar como WebP
+        # --------------------------------------------------
+
+        memoria = BytesIO()
+
+        imagen.save(
+            memoria,
+            format="WEBP",
+            quality=82,
+            optimize=True,
+            method=6
+        )
+
+        memoria.seek(0)
+
+        print(
+            "✅ Imagen optimizada correctamente."
+        )
+
+        return memoria.read()
+
+    except Exception as error:
+
+        print(
+            "❌ Error optimizando imagen:"
+        )
+
+        print(error)
+
+        return None
+
+
+# ==========================================================
+# SUBIR IMAGEN
+# ==========================================================
+
+def subir_imagen(archivo):
+
+    if not archivo or not archivo.filename:
+
+        return ""
+
+    try:
+
+        # --------------------------------------------------
+        # Comprobar extensión
+        # --------------------------------------------------
+
+        nombre_original = secure_filename(
+            archivo.filename
+        )
+
+        extension = os.path.splitext(
+            nombre_original
+        )[1].lower()
+
+        extensiones_permitidas = {
+            ".jpg",
+            ".jpeg",
+            ".png",
+            ".webp"
+        }
+
+        if extension not in extensiones_permitidas:
+
+            print(
+                "❌ Formato de imagen no permitido."
+            )
+
+            return ""
+
+        # --------------------------------------------------
+        # Optimizar
+        # --------------------------------------------------
+
+        contenido = optimizar_imagen(
+            archivo
+        )
+
+        if not contenido:
+
+            return ""
+
+        # --------------------------------------------------
+        # Crear nombre único
+        # --------------------------------------------------
+
+        nombre_unico = (
+            str(uuid.uuid4())
+            + ".webp"
+        )
+
+        # --------------------------------------------------
+        # Subir a Supabase Storage
+        # --------------------------------------------------
+
+        supabase.storage \
+            .from_(STORAGE_BUCKET) \
+            .upload(
+                nombre_unico,
+                contenido,
+                {
+                    "content-type": "image/webp",
+                    "upsert": "false"
+                }
+            )
+
+        # --------------------------------------------------
+        # Obtener URL pública
+        # --------------------------------------------------
+
+        foto_url = (
+            supabase.storage
+            .from_(STORAGE_BUCKET)
+            .get_public_url(
+                nombre_unico
+            )
+        )
+
+        print(
+            "✅ Imagen subida y optimizada correctamente."
+        )
+
+        return foto_url
+
+    except Exception as error:
+
+        print(
+            "❌ Error subiendo imagen:"
+        )
+
+        print(error)
+
+        return ""
+
+
+# ==========================================================
+# CREAR PRODUCTO
+# ==========================================================
+
+def crear_producto(
+    nombre,
+    categoria,
+    precio,
+    stock,
+    descripcion,
+    archivo
+):
+
+    foto_url = subir_imagen(
+        archivo
+    )
+
+    nuevo_producto = {
+
+        "nombre": nombre,
+
+        "categoria": categoria,
+
+        "precio": precio,
+
+        "stock": stock,
+
+        "descripcion": descripcion,
+
+        "foto": foto_url
+    }
+
+    try:
+
+        respuesta = (
+            supabase
+            .table("productos")
+            .insert(nuevo_producto)
+            .execute()
+        )
+
+        if respuesta.data:
+
+            print(
+                "✅ Producto guardado correctamente."
+            )
+
+            return respuesta.data[0]
+
+        print(
+            "⚠️ Supabase no devolvió el producto."
+        )
+
+        return None
+
+    except Exception as error:
+
+        print(
+            "❌ Error guardando producto:"
+        )
+
+        print(error)
+
+        return None
+
+
+# ==========================================================
+# ACTUALIZAR PRODUCTO
+# ==========================================================
+
+def actualizar_producto(
+    producto_id,
+    nombre,
+    categoria,
+    precio,
+    stock,
+    descripcion
+):
+
+    datos = {
+
+        "nombre": nombre,
+
+        "categoria": categoria,
+
+        "precio": precio,
+
+        "stock": stock,
+
+        "descripcion": descripcion
+    }
+
+    try:
+
+        respuesta = (
+            supabase
+            .table("productos")
+            .update(datos)
+            .eq("id", producto_id)
+            .execute()
+        )
+
+        if respuesta.data:
+
+            print(
+                "✅ Producto actualizado correctamente."
+            )
+
+            return respuesta.data[0]
+
+        return None
+
+    except Exception as error:
+
+        print(
+            "❌ Error actualizando producto:"
+        )
+
+        print(error)
+
+        return None
+
+
+# ==========================================================
+# ELIMINAR PRODUCTO
+# ==========================================================
+
+def eliminar_producto(producto_id):
+
+    try:
+
+        respuesta = (
+            supabase
+            .table("productos")
+            .delete()
+            .eq("id", producto_id)
+            .execute()
+        )
+
+        print(
+            "✅ Producto eliminado correctamente."
+        )
+
+        return True
+
+    except Exception as error:
+
+        print(
+            "❌ Error eliminando producto:"
+        )
+
+        print(error)
+
+        return False

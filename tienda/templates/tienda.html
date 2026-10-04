@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+
+    <!-- ==================================================
+         SEO
+    ================================================== -->
+
+    <title>
+        Distrivariedades El Progreso | Belleza, Maquillaje y Variedades
+    </title>
+
+    <meta name="description"
+          content="Distrivariedades El Progreso ofrece productos de cacharrería, maquillaje, cabello, belleza y cuidado de la piel.">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <meta name="author"
+          content="Distrivariedades El Progreso">
+
+    <meta name="theme-color"
+          content="#e8a9c1">
+
+
+    <!-- ==================================================
+         OPEN GRAPH
+    ================================================== -->
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:title"
+          content="Distrivariedades El Progreso">
+
+    <meta property="og:description"
+          content="Productos de cacharrería, maquillaje, cabello, belleza y cuidado de la piel.">
+
+    <meta property="og:site_name"
+          content="Distrivariedades El Progreso">
+
+    <meta property="og:locale"
+          content="es_CO">
+
+
+    <!-- ==================================================
+         FAVICON
+    ================================================== -->
+
+    <link rel="icon"
+          type="image/svg+xml"
+          href="{{ url_for('tienda.static', filename='favicon.svg') }}">
+
+
+    <!-- ==================================================
+         DATOS ESTRUCTURADOS
+    ================================================== -->
+
+    <script type="application/ld+json">
+
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+
+        "name": "Distrivariedades El Progreso",
+
+        "description": "Tienda de productos de cacharrería, maquillaje, cabello, belleza y cuidado de la piel.",
+
+        "url": "{{ request.url_root }}",
+
+        "image": "{{ request.url_root }}static/favicon.svg",
+
+        "priceRange": "$$",
+
+        "currenciesAccepted": "COP",
+
+        "paymentAccepted": "Efectivo, transferencia",
+
+        "sameAs": []
+    }
+
+    </script>
+
+
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #fff8f5;
+
+            color: #4b3025;
+
+        }
+
+
+        /* ==================================================
+           HEADER
+        ================================================== */
+
+        header {
+
+            background: #e8a9c1;
+
+            color: #4b3025;
+
+            padding: 18px 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+        }
+
+
+        .logo {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+        }
+
+
+        nav {
+
+            display: flex;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+        }
+
+
+        nav a {
+
+            color: #4b3025;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+        nav a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ==================================================
+           CARRITO HEADER
+        ================================================== */
+
+        .boton-carrito-header {
+
+            background: #6b4534;
+
+            color: white;
+
+            padding: 9px 14px;
+
+            border-radius: 20px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .boton-carrito-header:hover {
+
+            background: #4b3025;
+
+        }
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .hero {
+
+            background: #f3d5df;
+
+            padding: 55px 20px;
+
+            text-align: center;
+
+        }
+
+
+        .hero h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .hero p {
+
+            font-size: 18px;
+
+            max-width: 700px;
+
+            margin: auto;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* ==================================================
+           CATEGORÍAS
+        ================================================== */
+
+        .categorias {
+
+            padding: 30px 20px 10px;
+
+            text-align: center;
+
+        }
+
+
+        .categorias h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .botones-categorias {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .boton-categoria {
+
+            border: none;
+
+            background: #6b4534;
+
+            color: white;
+
+            padding: 10px 18px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .boton-categoria:hover {
+
+            background: #4b3025;
+
+        }
+
+
+        /* ==================================================
+           PRODUCTOS
+        ================================================== */
+
+        .productos {
+
+            padding: 35px 20px;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+        }
+
+
+        .productos h2 {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .grid-productos {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(230px, 300px)
+                );
+
+            gap: 25px;
+
+            justify-content: center;
+
+        }
+
+
+        .producto {
+
+            width: 100%;
+
+            max-width: 300px;
+
+            background: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.2s ease;
+
+        }
+
+
+        .producto:hover {
+
+            transform: translateY(-4px);
+
+        }
+
+
+        /* ==================================================
+           IMÁGENES
+           YA NO SE ESTIRAN
+        ================================================== */
+
+        .imagen-producto {
+
+            width: 100%;
+
+            height: 220px;
+
+            background: #fff8f5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+        }
+
+
+        .imagen-producto img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+
+        }
+
+
+        .producto-info {
+
+            padding: 18px;
+
+        }
+
+
+        .producto-info h3 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .categoria-producto {
+
+            font-size: 14px;
+
+            color: #8a6252;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .descripcion {
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .precio {
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            color: #6b4534;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .stock {
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .sin-stock {
+
+            color: #b00020;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ==================================================
+           BOTÓN VER PRODUCTO
+        ================================================== */
+
+        .boton-producto {
+
+            display: inline-block;
+
+            background: #e8a9c1;
+
+            color: #4b3025;
+
+            padding: 10px 15px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+        .boton-producto:hover {
+
+            background: #d992ae;
+
+        }
+
+
+        /* ==================================================
+           CARRITO
+        ================================================== */
+
+        .carrito {
+
+            position: fixed;
+
+            top: 0;
+
+            right: -420px;
+
+            width: 400px;
+
+            max-width: 95%;
+
+            height: 100vh;
+
+            background: white;
+
+            box-shadow:
+                -5px 0 20px rgba(0, 0, 0, 0.2);
+
+            z-index: 2000;
+
+            transition: right 0.3s ease;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+        .carrito.abierto {
+
+            right: 0;
+
+        }
+
+
+        .carrito-header {
+
+            background: #e8a9c1;
+
+            padding: 18px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .carrito-header h2 {
+
+            margin: 0;
+
+        }
+
+
+        .cerrar-carrito {
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            color: #4b3025;
+
+        }
+
+
+        .carrito-items {
+
+            flex: 1;
+
+            overflow-y: auto;
+
+            padding: 15px;
+
+        }
+
+
+        .carrito-item {
+
+            display: grid;
+
+            grid-template-columns: 65px 1fr;
+
+            gap: 12px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eee;
+
+        }
+
+
+        .carrito-item img {
+
+            width: 65px;
+
+            height: 65px;
+
+            object-fit: contain;
+
+            background: #fff8f5;
+
+            border-radius: 8px;
+
+        }
+
+
+        .carrito-item h4 {
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .carrito-precio {
+
+            font-weight: bold;
+
+            color: #6b4534;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .cantidad-controles {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .cantidad-controles button {
+
+            border: none;
+
+            background: #e8a9c1;
+
+            width: 27px;
+
+            height: 27px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .eliminar-item {
+
+            margin-top: 7px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #b00020;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+        }
+
+
+        .carrito-footer {
+
+            padding: 18px;
+
+            border-top: 1px solid #ddd;
+
+        }
+
+
+        .carrito-total {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .boton-vaciar {
+
+            width: 100%;
+
+            border: none;
+
+            background: #6b4534;
+
+            color: white;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .boton-vaciar:hover {
+
+            background: #4b3025;
+
+        }
+
+
+        .carrito-vacio {
+
+            text-align: center;
+
+            padding: 40px 15px;
+
+            color: #777;
+
+        }
+
+
+        /* ==================================================
+           WHATSAPP
+        ================================================== */
+
+        .whatsapp {
+
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            background: #25d366;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.2);
+
+            z-index: 1000;
+
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        footer {
+
+            background: #4b3025;
+
+            color: white;
+
+            padding: 35px 20px;
+
+            margin-top: 40px;
+
+        }
+
+
+        .footer-contenido {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            text-align: center;
+
+        }
+
+
+        .footer-contenido h3 {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .footer-contenido p {
+
+            margin-bottom: 15px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .enlaces-legales {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+
+            margin-top: 15px;
+
+        }
+
+
+        .enlaces-legales a {
+
+            color: #f3d5df;
+
+            text-decoration: none;
+
+        }
+
+
+        .enlaces-legales a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ==================================================
+           MÓVIL
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            header {
+
+                justify-content: center;
+
+                text-align: center;
+
+            }
+
+
+            nav {
+
+                justify-content: center;
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 30px;
+
+            }
+
+
+            .hero p {
+
+                font-size: 16px;
+
+            }
+
+
+            .productos {
+
+                padding-left: 15px;
+
+                padding-right: 15px;
+
+            }
+
+
+            .grid-productos {
+
+                grid-template-columns:
+                    minmax(0, 300px);
+
+                justify-content: center;
+
+            }
+
+
+            .producto {
+
+                max-width: 300px;
+
+            }
+
+
+            .imagen-producto {
+
+                height: 220px;
+
+            }
+
+
+            .enlaces-legales {
+
+                flex-direction: column;
+
+                gap: 10px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+    <div class="logo">
+        DV
+    </div>
+
+
+    <nav>
+
+        <a href="#inicio">
+            Inicio
+        </a>
+
+        <a href="#categorias">
+            Categorías
+        </a>
+
+        <a href="#productos">
+            Productos
+        </a>
+
+        <a
+            href="#"
+            class="boton-carrito-header"
+            onclick="abrirCarrito(); return false;">
+
+            🛒 Carrito
+            <span id="contador-carrito">0</span>
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero" id="inicio">
+
+    <h1>
+        Distrivariedades El Progreso
+    </h1>
+
+    <p>
+        Encuentra productos de cacharrería,
+        maquillaje, cabello, belleza y cuidado de la piel.
+    </p>
+
+</section>
+
+
+<!-- ==================================================
+     CATEGORÍAS
+================================================== -->
+
+<section class="categorias" id="categorias">
+
+    <h2>
+        Categorías
+    </h2>
+
+
+    <div class="botones-categorias">
+
+        <button
+            class="boton-categoria"
+            onclick="filtrarProductos('Todos')">
+
+            Todos
+
+        </button>
+
+
+        <button
+            class="boton-categoria"
+            onclick="filtrarProductos('Cacharrería')">
+
+            Cacharrería
+
+        </button>
+
+
+        <button
+            class="boton-categoria"
+            onclick="filtrarProductos('Maquillaje')">
+
+            Maquillaje
+
+        </button>
+
+
+        <button
+            class="boton-categoria"
+            onclick="filtrarProductos('Cabello')">
+
+            Cabello
+
+        </button>
+
+
+        <button
+            class="boton-categoria"
+            onclick="filtrarProductos('Cuidado de la piel')">
+
+            Cuidado de la piel
+
+        </button>
+
+
+        <button
+            class="boton-categoria"
+            onclick="filtrarProductos('Belleza')">
+
+            Belleza
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     PRODUCTOS
+================================================== -->
+
+<section class="productos" id="productos">
+
+    <h2>
+        Nuestros productos
+    </h2>
+
+
+    <div class="grid-productos">
+
+
+        {% for producto in productos %}
+
+        <article
+            class="producto"
+            data-categoria="{{ producto.categoria }}">
+
+
+            <!-- IMAGEN -->
+
+            <a
+                href="{{ url_for('tienda.ver_producto', producto_id=producto.id) }}">
+
+                <div class="imagen-producto">
+
+                    {% if producto.foto %}
+
+                        <img
+                            src="{{ producto.foto }}"
+                            alt="{{ producto.nombre }} - {{ producto.categoria }}"
+                            loading="lazy">
+
+                    {% else %}
+
+                        <img
+                            src="https://via.placeholder.com/500x400?text=DV"
+                            alt="Producto de Distrivariedades El Progreso"
+                            loading="lazy">
+
+                    {% endif %}
+
+                </div>
+
+            </a>
+
+
+            <div class="producto-info">
+
+
+                <h3>
+                    {{ producto.nombre }}
+                </h3>
+
+
+                <div class="categoria-producto">
+                    {{ producto.categoria }}
+                </div>
+
+
+                <div class="descripcion">
+                    {{ producto.descripcion }}
+                </div>
+
+
+                <div class="precio">
+
+                    ${{ "{:,.0f}".format(
+                        producto.precio|int
+                    ).replace(",", ".") }}
+
+                </div>
+
+
+                <div class="stock">
+
+                    {% if producto.stock|int > 0 %}
+
+                        Disponible:
+                        {{ producto.stock }}
+
+                    {% else %}
+
+                        <span class="sin-stock">
+                            Agotado
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <a
+                    href="{{ url_for(
+                        'tienda.ver_producto',
+                        producto_id=producto.id
+                    ) }}"
+                    class="boton-producto">
+
+                    Ver producto
+
+                </a>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     CARRITO
+================================================== -->
+
+<div
+    id="carrito"
+    class="carrito">
+
+
+    <div class="carrito-header">
+
+        <h2>
+            🛒 Mi carrito
+        </h2>
+
+        <button
+            class="cerrar-carrito"
+            onclick="cerrarCarrito()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="carrito-items"
+        class="carrito-items">
+
+    </div>
+
+
+    <div class="carrito-footer">
+
+        <div class="carrito-total">
+
+            <span>
+                Total:
+            </span>
+
+            <span id="carrito-total">
+                $0
+            </span>
+
+        </div>
+
+
+        <button
+            class="boton-vaciar"
+            onclick="vaciarCarrito()">
+
+            Vaciar carrito
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     WHATSAPP
+================================================== -->
+
+<a
+    href="https://wa.me/"
+    class="whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp">
+
+    💬
+
+</a>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+    <div class="footer-contenido">
+
+        <h3>
+            Distrivariedades El Progreso
+        </h3>
+
+
+        <p>
+            Variedad, belleza y productos para
+            tu día a día en un solo lugar.
+        </p>
+
+
+        <p>
+            © 2026 Distrivariedades El Progreso.
+            Todos los derechos reservados.
+        </p>
+
+
+        <div class="enlaces-legales">
+
+            <a href="{{ url_for('tienda.aviso_legal') }}">
+                Aviso legal
+            </a>
+
+
+            <a href="{{ url_for('tienda.privacidad') }}">
+                Política de privacidad
+            </a>
+
+
+            <a href="{{ url_for('tienda.cookies') }}">
+                Política de cookies
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+    /* ==================================================
+       FILTRO DE CATEGORÍAS
+    ================================================== */
+
+    function filtrarProductos(categoria) {
+
+        const productos =
+            document.querySelectorAll(".producto");
+
+
+        productos.forEach(function(producto) {
+
+            const categoriaProducto =
+                producto.dataset.categoria;
+
+
+            if (
+                categoria === "Todos" ||
+                categoriaProducto === categoria
+            ) {
+
+                producto.style.display = "block";
+
+            } else {
+
+                producto.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* ==================================================
+       OBTENER CARRITO
+    ================================================== */
+
+    function obtenerCarrito() {
+
+        return JSON.parse(
+            localStorage.getItem("carritoDV")
+        ) || [];
+
+    }
+
+
+    /* ==================================================
+       GUARDAR CARRITO
+    ================================================== */
+
+    function guardarCarrito(carrito) {
+
+        localStorage.setItem(
+            "carritoDV",
+            JSON.stringify(carrito)
+        );
+
+    }
+
+
+    /* ==================================================
+       ABRIR CARRITO
+    ================================================== */
+
+    function abrirCarrito() {
+
+        document
+            .getElementById("carrito")
+            .classList
+            .add("abierto");
+
+        mostrarCarrito();
+
+    }
+
+
+    /* ==================================================
+       CERRAR CARRITO
+    ================================================== */
+
+    function cerrarCarrito() {
+
+        document
+            .getElementById("carrito")
+            .classList
+            .remove("abierto");
+
+    }
+
+
+    /* ==================================================
+       MOSTRAR CARRITO
+    ================================================== */
+
+    function mostrarCarrito() {
+
+        const carrito =
+            obtenerCarrito();
+
+
+        const contenedor =
+            document.getElementById(
+                "carrito-items"
+            );
+
+
+        const totalElemento =
+            document.getElementById(
+                "carrito-total"
+            );
+
+
+        const contador =
+            document.getElementById(
+                "contador-carrito"
+            );
+
+
+        contenedor.innerHTML = "";
+
+
+        if (carrito.length === 0) {
+
+            contenedor.innerHTML = `
+
+                <div class="carrito-vacio">
+
+                    🛒
+
+                    <br><br>
+
+                    Tu carrito está vacío.
+
+                </div>
+
+            `;
+
+            totalElemento.textContent = "$0";
+
+            contador.textContent = "0";
+
+            return;
+
+        }
+
+
+        let total = 0;
+
+        let cantidadTotal = 0;
+
+
+        carrito.forEach(function(item, indice) {
+
+
+            const subtotal =
+                item.precio *
+                item.cantidad;
+
+
+            total += subtotal;
+
+            cantidadTotal +=
+                item.cantidad;
+
+
+            const imagen =
+                item.foto ||
+                "https://via.placeholder.com/100x100?text=DV";
+
+
+            const itemHTML = `
+
+                <div class="carrito-item">
+
+                    <img
+                        src="${imagen}"
+                        alt="${item.nombre}">
+
+
+                    <div>
+
+                        <h4>
+                            ${item.nombre}
+                        </h4>
+
+
+                        <div class="carrito-precio">
+
+                            $${subtotal
+                                .toLocaleString(
+                                    "es-CO"
+                                )}
+
+                        </div>
+
+
+                        <div class="cantidad-controles">
+
+                            <button
+                                onclick="cambiarCantidad(
+                                    ${indice},
+                                    -1
+                                )">
+
+                                −
+
+                            </button>
+
+
+                            <span>
+                                ${item.cantidad}
+                            </span>
+
+
+                            <button
+                                onclick="cambiarCantidad(
+                                    ${indice},
+                                    1
+                                )">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            class="eliminar-item"
+                            onclick="eliminarDelCarrito(
+                                ${indice}
+                            )">
+
+                            Eliminar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            contenedor.innerHTML +=
+                itemHTML;
+
+        });
+
+
+        totalElemento.textContent =
+            "$" +
+            total.toLocaleString(
+                "es-CO"
+            );
+
+
+        contador.textContent =
+            cantidadTotal;
+
+    }
+
+
+    /* ==================================================
+       CAMBIAR CANTIDAD
+    ================================================== */
+
+    function cambiarCantidad(
+        indice,
+        cambio
+    ) {
+
+        const carrito =
+            obtenerCarrito();
+
+
+        const item =
+            carrito[indice];
+
+
+        const nuevaCantidad =
+            item.cantidad + cambio;
+
+
+        if (nuevaCantidad <= 0) {
+
+            carrito.splice(
+                indice,
+                1
+            );
+
+        } else if (
+            nuevaCantidad <= item.stock
+        ) {
+
+            item.cantidad =
+                nuevaCantidad;
+
+        } else {
+
+            alert(
+                "No hay más unidades disponibles."
+            );
+
+            return;
+
+        }
+
+
+        guardarCarrito(
+            carrito
+        );
+
+
+        mostrarCarrito();
+
+    }
+
+
+    /* ==================================================
+       ELIMINAR PRODUCTO
+    ================================================== */
+
+    function eliminarDelCarrito(
+        indice
+    ) {
+
+        const carrito =
+            obtenerCarrito();
+
+
+        carrito.splice(
+            indice,
+            1
+        );
+
+
+        guardarCarrito(
+            carrito
+        );
+
+
+        mostrarCarrito();
+
+    }
+
+
+    /* ==================================================
+       VACIAR CARRITO
+    ================================================== */
+
+    function vaciarCarrito() {
+
+        localStorage.removeItem(
+            "carritoDV"
+        );
+
+
+        mostrarCarrito();
+
+    }
+
+
+    /* ==================================================
+       ACTUALIZAR AL CARGAR
+    ================================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            mostrarCarrito();
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
