@@ -31,6 +31,7 @@
             padding: 0;
         }
 
+
         body {
 
             font-family: Arial, sans-serif;
@@ -64,6 +65,7 @@
 
         }
 
+
         .logo {
 
             font-size: 28px;
@@ -71,6 +73,7 @@
             font-weight: bold;
 
         }
+
 
         header a {
 
@@ -81,6 +84,7 @@
             font-weight: bold;
 
         }
+
 
         .boton-carrito-header {
 
@@ -103,6 +107,13 @@
         }
 
 
+        .boton-carrito-header:hover {
+
+            background: #4b3025;
+
+        }
+
+
         /* ==================================================
            PRODUCTO
         ================================================== */
@@ -116,6 +127,7 @@
             padding: 20px;
 
         }
+
 
         .producto-detalle {
 
@@ -163,6 +175,7 @@
 
         }
 
+
         .imagen-contenedor img {
 
             width: 100%;
@@ -192,6 +205,7 @@
 
         }
 
+
         .categoria {
 
             color: #8a6252;
@@ -202,6 +216,7 @@
 
         }
 
+
         h1 {
 
             font-size: 34px;
@@ -210,6 +225,7 @@
 
         }
 
+
         .descripcion {
 
             line-height: 1.6;
@@ -217,6 +233,7 @@
             margin-bottom: 20px;
 
         }
+
 
         .precio {
 
@@ -230,11 +247,13 @@
 
         }
 
+
         .stock {
 
             margin-bottom: 25px;
 
         }
+
 
         .agotado {
 
@@ -259,6 +278,7 @@
 
         }
 
+
         .boton {
 
             border: none;
@@ -277,6 +297,7 @@
 
         }
 
+
         .boton-carrito {
 
             background: #e8a9c1;
@@ -285,11 +306,13 @@
 
         }
 
+
         .boton-carrito:hover {
 
             background: #d992ae;
 
         }
+
 
         .boton-volver {
 
@@ -298,6 +321,7 @@
             color: white;
 
         }
+
 
         .boton-volver:hover {
 
@@ -322,14 +346,16 @@
 
             max-width: 95%;
 
-            height: 100vh;
+            height: 100dvh;
+
+            max-height: 100dvh;
 
             background: white;
 
             box-shadow:
                 -5px 0 20px rgba(0, 0, 0, 0.2);
 
-            z-index: 1000;
+            z-index: 2000;
 
             transition: right 0.3s ease;
 
@@ -339,11 +365,13 @@
 
         }
 
+
         .carrito-panel.abierto {
 
             right: 0;
 
         }
+
 
         .carrito-header {
 
@@ -357,13 +385,17 @@
 
             align-items: center;
 
+            flex-shrink: 0;
+
         }
+
 
         .carrito-header h2 {
 
             font-size: 22px;
 
         }
+
 
         .cerrar-carrito {
 
@@ -379,6 +411,7 @@
 
         }
 
+
         .carrito-contenido {
 
             padding: 20px;
@@ -387,7 +420,10 @@
 
             flex: 1;
 
+            min-height: 0;
+
         }
+
 
         .carrito-vacio {
 
@@ -398,6 +434,7 @@
             margin-top: 40px;
 
         }
+
 
         .item-carrito {
 
@@ -411,6 +448,7 @@
 
         }
 
+
         .item-carrito img {
 
             width: 70px;
@@ -423,13 +461,19 @@
 
             border-radius: 8px;
 
+            flex-shrink: 0;
+
         }
+
 
         .item-info {
 
             flex: 1;
 
+            min-width: 0;
+
         }
+
 
         .item-info h3 {
 
@@ -439,6 +483,7 @@
 
         }
 
+
         .item-precio {
 
             font-weight: bold;
@@ -446,6 +491,7 @@
             margin-bottom: 8px;
 
         }
+
 
         .controles-cantidad {
 
@@ -456,6 +502,7 @@
             gap: 8px;
 
         }
+
 
         .controles-cantidad button {
 
@@ -477,6 +524,7 @@
 
         }
 
+
         .eliminar-item {
 
             margin-top: 6px;
@@ -493,13 +541,19 @@
 
         }
 
+
         .carrito-footer {
 
             padding: 20px;
 
             border-top: 1px solid #ddd;
 
+            flex-shrink: 0;
+
+            background: white;
+
         }
+
 
         .total-carrito {
 
@@ -517,7 +571,7 @@
 
 
         /* ==================================================
-           BOTÓN WHATSAPP
+           WHATSAPP
         ================================================== */
 
         .boton-whatsapp {
@@ -544,6 +598,7 @@
 
         }
 
+
         .boton-whatsapp:hover {
 
             background: #1ebe5d;
@@ -552,7 +607,7 @@
 
 
         /* ==================================================
-           BOTÓN VACIAR
+           VACIAR
         ================================================== */
 
         .vaciar-carrito {
@@ -576,8 +631,15 @@
         }
 
 
+        .vaciar-carrito:hover {
+
+            background: #4b3025;
+
+        }
+
+
         /* ==================================================
-           FONDO DEL CARRITO
+           OVERLAY
         ================================================== */
 
         .carrito-overlay {
@@ -588,11 +650,12 @@
 
             background: rgba(0, 0, 0, 0.35);
 
-            z-index: 999;
+            z-index: 1999;
 
             display: none;
 
         }
+
 
         .carrito-overlay.visible {
 
@@ -634,6 +697,7 @@
 
             }
 
+
             .producto-detalle {
 
                 grid-template-columns: 1fr;
@@ -642,11 +706,13 @@
 
             }
 
+
             .imagen-contenedor {
 
                 min-height: 280px;
 
             }
+
 
             h1 {
 
@@ -654,11 +720,35 @@
 
             }
 
+
             .carrito-panel {
 
                 width: 100%;
 
                 max-width: 100%;
+
+            }
+
+
+            .carrito-contenido {
+
+                padding: 15px;
+
+            }
+
+
+            .carrito-footer {
+
+                padding: 14px;
+
+            }
+
+
+            header {
+
+                justify-content: center;
+
+                text-align: center;
 
             }
 
@@ -678,9 +768,11 @@
         DV
     </div>
 
+
     <a href="{{ url_for('tienda.inicio') }}">
         ← Volver a la tienda
     </a>
+
 
     <button
         class="boton-carrito-header"
@@ -698,10 +790,6 @@
 
     <div class="producto-detalle">
 
-
-        <!-- ==================================================
-             IMAGEN
-        ================================================== -->
 
         <div class="imagen-contenedor">
 
@@ -722,23 +810,22 @@
         </div>
 
 
-        <!-- ==================================================
-             INFORMACIÓN
-        ================================================== -->
-
         <div class="informacion">
 
             <div class="categoria">
                 {{ producto.categoria }}
             </div>
 
+
             <h1>
                 {{ producto.nombre }}
             </h1>
 
+
             <div class="descripcion">
                 {{ producto.descripcion }}
             </div>
+
 
             <div class="precio">
 
@@ -800,7 +887,7 @@
 
 
 <!-- ======================================================
-     CARRITO
+     OVERLAY
 ====================================================== -->
 
 <div
@@ -809,6 +896,10 @@
     onclick="cerrarCarrito()">
 </div>
 
+
+<!-- ======================================================
+     CARRITO
+====================================================== -->
 
 <aside
     id="carrito-panel"
@@ -820,6 +911,7 @@
         <h2>
             🛒 Mi carrito
         </h2>
+
 
         <button
             class="cerrar-carrito"
@@ -835,7 +927,6 @@
     <div
         id="carrito-contenido"
         class="carrito-contenido">
-
     </div>
 
 
@@ -892,23 +983,32 @@
        DATOS DEL PRODUCTO
     ================================================== */
 
-    const productoId = "{{ producto.id }}";
+    const productoId =
+        "{{ producto.id }}";
+
 
     const productoNombre =
-        "{{ producto.nombre|e }}";
+        {{ producto.nombre|tojson }};
+
 
     const productoPrecio =
-        Number("{{ producto.precio|int }}");
+        Number(
+            "{{ producto.precio|int }}"
+        );
+
 
     const productoStock =
-        Number("{{ producto.stock|int }}");
+        Number(
+            "{{ producto.stock|int }}"
+        );
+
 
     const productoFoto =
-        "{{ producto.foto|e }}";
+        {{ (producto.foto or "")|tojson }};
 
 
     /* ==================================================
-       OBTENER CARRITO
+       CARRITO
     ================================================== */
 
     function obtenerCarrito() {
@@ -919,10 +1019,6 @@
 
     }
 
-
-    /* ==================================================
-       GUARDAR CARRITO
-    ================================================== */
 
     function guardarCarrito(carrito) {
 
@@ -955,11 +1051,12 @@
         if (existente) {
 
             if (
-                existente.cantidad <
+                Number(existente.cantidad) <
                 productoStock
             ) {
 
-                existente.cantidad++;
+                existente.cantidad =
+                    Number(existente.cantidad) + 1;
 
             } else {
 
@@ -1037,14 +1134,27 @@
         if (carrito.length === 0) {
 
             contenedor.innerHTML = `
+
                 <div class="carrito-vacio">
-                    🛒 Tu carrito está vacío.
+
+                    🛒
+
+                    <br><br>
+
+                    Tu carrito está vacío.
+
                 </div>
+
             `;
 
-            contador.textContent = "0";
 
-            totalElemento.textContent = "$0";
+            contador.textContent =
+                "0";
+
+
+            totalElemento.textContent =
+                "$0";
+
 
             return;
 
@@ -1055,15 +1165,31 @@
 
 
         carrito.forEach(
-            (item, indice) => {
+            function(item, indice) {
+
+                const cantidad =
+                    Number(item.cantidad);
+
+
+                const precio =
+                    Number(item.precio);
+
+
+                const subtotal =
+                    precio * cantidad;
+
 
                 cantidadTotal +=
-                    Number(item.cantidad);
+                    cantidad;
 
 
                 total +=
-                    Number(item.precio) *
-                    Number(item.cantidad);
+                    subtotal;
+
+
+                const imagen =
+                    item.foto ||
+                    "https://via.placeholder.com/100x100?text=DV";
 
 
                 html += `
@@ -1071,8 +1197,9 @@
                     <div class="item-carrito">
 
                         <img
-                            src="${item.foto || 'https://via.placeholder.com/100x100?text=DV'}"
+                            src="${imagen}"
                             alt="${item.nombre}">
+
 
                         <div class="item-info">
 
@@ -1080,11 +1207,15 @@
                                 ${item.nombre}
                             </h3>
 
+
                             <div class="item-precio">
+
                                 $${formatearPrecio(
-                                    item.precio
+                                    subtotal
                                 )}
+
                             </div>
+
 
                             <div class="controles-cantidad">
 
@@ -1098,9 +1229,11 @@
 
                                 </button>
 
+
                                 <span>
-                                    ${item.cantidad}
+                                    ${cantidad}
                                 </span>
+
 
                                 <button
                                     onclick="cambiarCantidad(
@@ -1113,6 +1246,7 @@
                                 </button>
 
                             </div>
+
 
                             <button
                                 class="eliminar-item"
@@ -1246,6 +1380,7 @@
             "carritoDV"
         );
 
+
         actualizarCarrito();
 
     }
@@ -1261,18 +1396,19 @@
             .getElementById(
                 "carrito-panel"
             )
-            .classList.add(
-                "abierto"
-            );
+            .classList
+            .add("abierto");
 
 
         document
             .getElementById(
                 "carrito-overlay"
             )
-            .classList.add(
-                "visible"
-            );
+            .classList
+            .add("visible");
+
+
+        actualizarCarrito();
 
     }
 
@@ -1287,18 +1423,16 @@
             .getElementById(
                 "carrito-panel"
             )
-            .classList.remove(
-                "abierto"
-            );
+            .classList
+            .remove("abierto");
 
 
         document
             .getElementById(
                 "carrito-overlay"
             )
-            .classList.remove(
-                "visible"
-            );
+            .classList
+            .remove("visible");
 
     }
 
@@ -1323,7 +1457,7 @@
 
 
     /* ==================================================
-       PEDIR POR WHATSAPP
+       WHATSAPP
     ================================================== */
 
     function pedirPorWhatsApp() {
@@ -1344,14 +1478,14 @@
 
 
         let mensaje =
-            "Hola, quiero hacer un pedido en Distrivariedades El Progreso:%0A%0A";
+            "Hola, quiero hacer un pedido en Distrivariedades El Progreso:\n\n";
 
 
         let total = 0;
 
 
         carrito.forEach(
-            (item) => {
+            function(item) {
 
                 const subtotal =
                     Number(item.precio) *
@@ -1370,19 +1504,19 @@
                     formatearPrecio(
                         subtotal
                     ) +
-                    "%0A";
+                    "\n";
 
             }
         );
 
 
         mensaje +=
-            "%0A💰 Total: $" +
+            "\n💰 Total: $" +
             formatearPrecio(total);
 
 
         mensaje +=
-            "%0A%0AQuedo atento/a para confirmar el pedido.";
+            "\n\nQuedo atento/a para confirmar el pedido.";
 
 
         const numeroWhatsApp =
@@ -1393,7 +1527,9 @@
             "https://wa.me/" +
             numeroWhatsApp +
             "?text=" +
-            mensaje;
+            encodeURIComponent(
+                mensaje
+            );
 
 
         window.open(
@@ -1405,10 +1541,17 @@
 
 
     /* ==================================================
-       CARGAR CARRITO AL ENTRAR
+       CARGAR CARRITO
     ================================================== */
 
-    actualizarCarrito();
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            actualizarCarrito();
+
+        }
+    );
 
 </script>
 
